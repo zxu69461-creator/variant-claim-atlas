@@ -9,9 +9,10 @@
   const num = (x) => (x == null ? '—' : x.toLocaleString('en-US'));
   let V, T, META, byRs, byGene, shards = {};
 
+  const DV = '?v=1.0.1';                                   // data version: bump when data/ changes
   const obj = (t) => t.rows.map((r) => Object.fromEntries(t.cols.map((c, i) => [c, r[i]])));
   async function load() {
-    const [v, t, m] = await Promise.all(['variants', 'traits', 'meta'].map((n) => fetch('data/' + n + '.json').then((r) => r.json())));
+    const [v, t, m] = await Promise.all(['variants', 'traits', 'meta'].map((n) => fetch('data/' + n + '.json' + DV).then((r) => r.json())));
     V = obj(v); T = obj(t); META = m;
     byRs = new Map(V.map((x) => [x.rsid, x]));
     byGene = new Map();
@@ -22,7 +23,7 @@
   }
   async function claims(rs) {
     const s = rs % META.shards;
-    if (!shards[s]) shards[s] = obj(await fetch('data/claims/' + String(s).padStart(2, '0') + '.json').then((r) => r.json()));
+    if (!shards[s]) shards[s] = obj(await fetch('data/claims/' + String(s).padStart(2, '0') + '.json' + DV).then((r) => r.json()));
     return shards[s].filter((c) => c.rsid === rs);
   }
 
