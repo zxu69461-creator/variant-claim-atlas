@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24314560.svg)](https://doi.org/10.5281/zenodo.24314560)
 
-Published claims that a named genetic variant is associated with a disease or trait, read from 75,578 PubMed abstracts and each set
+Published claims that a named genetic variant is associated with a disease or trait (201,720 claims from 71,577 PubMed abstracts), each set
 against genome-wide significant associations in the NHGRI-EBI GWAS Catalog, with frequency-matched random variants as the chance
 expectation.
 

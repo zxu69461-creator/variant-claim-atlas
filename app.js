@@ -17,7 +17,7 @@
     byRs = new Map(V.map((x) => [x.rsid, x]));
     byGene = new Map();
     V.forEach((x) => { if (x.gene) { const g = x.gene.toUpperCase(); (byGene.get(g) || byGene.set(g, []).get(g)).push(x); } });
-    $('#intro').textContent = `${num(META.claims)} published claims from ${num(META.papers)} PubMed papers on ${num(META.variants)} variants, each set against genome-wide significant associations in the GWAS Catalog (release of ${META.gwas_catalog}).`;
+    $('#intro').textContent = `The 201,720 disease or trait claims of the atlas include ${num(META.claims)} that report an association or its absence, from ${num(META.papers)} PubMed papers on ${num(META.variants)} variants; each is set against genome-wide significant associations in the GWAS Catalog (release of ${META.gwas_catalog}).`;
     $('#rel').textContent = `Sources: PubMed ${META.pubmed}; GWAS Catalog ${META.gwas_catalog}; Experimental Factor Ontology ${META.efo}; ClinVar ${META.clinvar}. Built ${META.built}.`;
     route();
   }
