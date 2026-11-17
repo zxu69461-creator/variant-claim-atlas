@@ -1,0 +1,18 @@
+{
+ "claims": 198399,
+ "papers": 71094,
+ "variants": 51764,
+ "traits": 30279,
+ "shards": 64,
+ "size_classes": [
+  "<500",
+  "500\u20131,999",
+  "2,000\u20139,999",
+  "\u226510,000"
+ ],
+ "gwas_catalog": "29 October 2026",
+ "clinvar": "16 November 2026",
+ "pubmed": "2026 baseline",
+ "efo": "v3.95.0",
+ "built": "2026-11-17"
+}

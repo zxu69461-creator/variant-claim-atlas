@@ -1,0 +1,66 @@
+{
+ "_doc": "varclaims colour stage (2026-11-17, flankko process): one meaning, one colour across Figs 1-4. Roles: cSup = supported genome-wide / variants mostly supported; cNot = not supported / rarely supported; cPart = partly supported (5-50%); cRest = the genome-wide record and claims restating it; cFirst = claims that came before the first genome-wide report; cClin = ClinVar risk variants. Context variables (study populations, designs, chromosomes, size classes) are warm greys or ramps of a role; trait areas keep the paper's area colours. S0 = the v3 colours made consistent; S1-S4 take their hues from the user's rating-3 reference figures (same references as the flankko colour page).",
+ "default": "SF",
+ "systems": {
+  "S0": {
+   "name": "Current colours, made consistent",
+   "ref": "varclaims v3",
+   "cSup": "#2E9E4F",
+   "cNot": "#D8C29A",
+   "cPart": "#4F9A8F",
+   "cRest": "#3F5FB0",
+   "cFirst": "#E2603F",
+   "cClin": "#B8333E"
+  },
+  "S1": {
+   "name": "Coral, navy and plum",
+   "ref": "PMC12900648_F4",
+   "cSup": "#375B94",
+   "cNot": "#D9C8C0",
+   "cPart": "#9DB3D6",
+   "cRest": "#6DB680",
+   "cFirst": "#E56E5E",
+   "cClin": "#6B295F"
+  },
+  "S2": {
+   "name": "Red, blue and violet",
+   "ref": "PMC12888464_F5",
+   "cSup": "#2078B4",
+   "cNot": "#D8D0C5",
+   "cPart": "#A5CDE1",
+   "cRest": "#7BC3A1",
+   "cFirst": "#E23531",
+   "cClin": "#5E4FA2"
+  },
+  "S3": {
+   "name": "Orange, blue and teal",
+   "ref": "PMC12278635_F1",
+   "cSup": "#3B9C8C",
+   "cNot": "#D9CBB8",
+   "cPart": "#ACC7E6",
+   "cRest": "#1A78B6",
+   "cFirst": "#F59C45",
+   "cClin": "#B5525A"
+  },
+  "S4": {
+   "name": "Orange and purple",
+   "ref": "PMC10627820_F1",
+   "cSup": "#6C196D",
+   "cNot": "#E3D6C4",
+   "cPart": "#B48BB5",
+   "cRest": "#3FB1AC",
+   "cFirst": "#F78213",
+   "cClin": "#C23B22"
+  },
+  "SF": {
+   "name": "User pick 2026-11-17: S2 base; supported/not/partly from S1; restated/first from S4; ClinVar from S3",
+   "ref": "S2+S1+S4+S3",
+   "cSup": "#375B94",
+   "cNot": "#D9C8C0",
+   "cPart": "#9DB3D6",
+   "cRest": "#3FB1AC",
+   "cFirst": "#F78213",
+   "cClin": "#B5525A"
+  }
+ }
+}

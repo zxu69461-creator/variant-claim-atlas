@@ -1,0 +1,292 @@
+<title>变异关联判读核对</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+/* layout: one reading column, sticky progress bar on top, answer buttons pinned under the abstract */
+:root{
+  --bg:#f6f7f5; --panel:#ffffff; --ink:#1d2523; --muted:#5d6966; --line:#dde2df;
+  --accent:#2f6b5e; --accent-ink:#ffffff; --rs:#f3dfa6; --oc:#cfe6e0;
+  --yes:#2f6b5e; --no:#8a4b3a; --mid:#6a6f86; --warn:#9a6b12;
+  --f-ui:-apple-system,"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei",sans-serif;
+  --f-read:"Source Serif 4",Georgia,"Songti SC",serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141917; --panel:#1c2321; --ink:#e4e9e6; --muted:#9aa6a2; --line:#2e3734;
+  --accent:#6fb3a2; --accent-ink:#0e1513; --rs:#5a4a1c; --oc:#24453e;
+  --yes:#6fb3a2; --no:#d08a76; --mid:#a3a8c2; --warn:#d9ad55; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#141917; --panel:#1c2321; --ink:#e4e9e6; --muted:#9aa6a2; --line:#2e3734;
+  --accent:#6fb3a2; --accent-ink:#0e1513; --rs:#5a4a1c; --oc:#24453e;
+  --yes:#6fb3a2; --no:#d08a76; --mid:#a3a8c2; --warn:#d9ad55; color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:15px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 40px}
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--panel);border-bottom:1px solid var(--line)}
+header .in{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:8px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.prog{flex:1 1 160px;min-width:0}
+.prog .t{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.track{height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.track i{display:block;height:100%;background:var(--accent);width:0}
+.save{font-size:12px;color:var(--muted)}
+.save.off{color:var(--warn)}
+button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 12px}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.pri{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button:disabled{opacity:.45;cursor:default}
+.small{font-size:13px;padding:6px 10px}
+h1{font-size:22px;line-height:1.3;margin:8px 0 4px;text-wrap:balance}
+h2{font-size:17px;margin:20px 0 6px}
+p{margin:6px 0}
+.lead{color:var(--muted)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.opt-def{display:grid;grid-template-columns:7.5em 1fr;gap:4px 12px}
+.opt-def b{font-weight:600}
+.ex{font-family:var(--f-read);font-size:14px;color:var(--muted);border-left:3px solid var(--line);padding-left:10px;margin:4px 0}
+.meta{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;font-variant-numeric:tabular-nums}
+.q{font-size:16px;font-weight:600;margin:0}
+.q .rsid,.rsid{font-family:var(--f-mono);font-size:.92em}
+.paper h3{font-family:var(--f-read);font-weight:600;font-size:17px;line-height:1.4;margin:0 0 8px;text-wrap:balance}
+.abs{font-family:var(--f-read);font-size:16px;line-height:1.7;max-width:68ch;overflow-wrap:anywhere}
+mark.rs{background:var(--rs);color:inherit;border-radius:3px;padding:0 2px;font-family:var(--f-mono);font-size:.9em}
+mark.oc{background:var(--oc);color:inherit;border-radius:3px;padding:0 2px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choices button{padding:12px 10px;text-align:left;line-height:1.35}
+.choices button small{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+.choices button.on{border-width:2px;padding:11px 9px}
+.choices button.on[data-v="yes"]{border-color:var(--yes)} .choices button.on[data-v="no"]{border-color:var(--no)}
+.choices button.on[data-v="none"],.choices button.on[data-v="notstudied"]{border-color:var(--mid)}
+.choices button.on::before{content:"✓ ";font-weight:700}
+.rsrow{display:flex;align-items:center;gap:10px;justify-content:space-between;border-top:1px solid var(--line);padding-top:8px;flex-wrap:wrap}
+.rsrow:first-child{border-top:0;padding-top:0}
+.seg{display:flex;gap:6px}
+.seg button.on{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.seg button.on.n{background:var(--no);border-color:var(--no);color:var(--accent-ink)}
+.nav{display:flex;gap:8px;justify-content:space-between;flex-wrap:wrap}
+textarea{width:100%;box-sizing:border-box;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--panel);color:var(--ink);min-height:44px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(52px,1fr));gap:6px}
+.grid button{padding:6px 0;font-family:var(--f-mono);font-size:12px}
+.grid button.done{background:var(--oc)}
+.grid button.cur{outline:2px solid var(--accent)}
+.notice{font-size:13px;color:var(--warn)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+@media (max-width:480px){.choices{grid-template-columns:1fr}.opt-def{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header class="bar"><div class="in">
+  <div class="prog"><div class="t" id="progT">已完成 0 / 0</div><div class="track"><i id="progI"></i></div></div>
+  <span class="save" id="saveS">正在连接云端…</span>
+  <button class="small" id="bRules" type="button">规则</button>
+  <button class="small" id="bGrid" type="button">目录</button>
+</div></header>
+
+<main class="wrap">
+  <section id="vIntro" class="stack">
+    <div>
+      <h1>变异关联判读核对</h1>
+      <p class="lead">这是一份核对问卷：请阅读每篇摘要，判断摘要对指定变异（rsID）给出的结论。结果用来检验自动判读的准确度，页面不显示任何自动判读的答案。</p>
+    </div>
+    <div class="box stack">
+      <div><b>共两部分</b>，约 2 小时，可以分几次做完。每次选择都会自动保存到云端，同时在本机留一份；中途关闭页面不会丢失。</div>
+      <div><b>第一部分 · 判断一对关系（120 题）</b>：题目给出一个变异和一个疾病或性状，请按摘要的说法选一项。</div>
+      <div><b>第二部分 · 查漏（30 篇）</b>：列出摘要提到的全部变异，请逐个判断摘要是否报告了它与任何疾病或性状存在有统计学支持的关联。</div>
+    </div>
+    <div class="box stack" id="rulesBody">
+      <h2 style="margin-top:0">第一部分的四个选项</h2>
+      <div class="opt-def">
+        <b>有关联</b><span>摘要报告这个变异与这个疾病/性状有关联（显著、风险升高或降低、与表型相关等），包括只在某个亚组或某种遗传模型下成立的关联。</span>
+        <b>报告无关联</b><span>摘要明确说这个变异与这个疾病/性状没有关联、差异不显著，或者未能重复。</span>
+        <b>无结论</b><span>这对关系在摘要里被研究或提到，但摘要没有就它给出有无关联的结论（只报告频率、只说"进一步研究"、结论含糊）。</span>
+        <b>不相关</b><span>摘要并没有研究这个变异与这个疾病/性状的关系（变异或疾病对不上，属于提取错误）。</span>
+      </div>
+      <p class="ex">例："rs1234 的 T 等位基因与 2 型糖尿病风险升高相关（OR 1.3，P = 0.002）" → 有关联。</p>
+      <p class="ex">例："rs1234 在病例和对照间的分布无显著差异" → 报告无关联。</p>
+      <p class="ex">例：摘要研究的是 rs1234 与骨密度，题目问的是 rs1234 与骨关节炎 → 不相关。</p>
+      <p>判断以摘要正文为准，不需要查原文或别的资料；拿不准时选你认为最接近的一项，可在备注里写一句。疾病名称和变异在摘要中已用底色标出（自动标注，可能有遗漏）。</p>
+      <h2>第二部分</h2>
+      <p>对列出的每个变异选"有"或"无"：<b>有</b> = 摘要报告它与某个疾病或性状存在有统计学支持的关联（任一疾病即可）；<b>无</b> = 摘要只提到它、报告阴性，或没有给出结论。</p>
+    </div>
+    <div class="row"><button class="pri" id="bStart" type="button">开始 / 继续</button><span class="lead" id="introProg"></span></div>
+    <div class="box stack">
+      <b>进度备份</b>
+      <div class="row">
+        <button class="small" id="bExport" type="button">导出进度文件</button>
+        <label class="small"><input type="file" id="fImport" accept=".json,application/json"> 导入进度文件</label>
+      </div>
+      <textarea id="exportTxt" hidden readonly aria-label="进度数据"></textarea>
+      <span class="notice" id="ioMsg"></span>
+    </div>
+  </section>
+
+  <section id="vItem" class="stack" hidden></section>
+  <section id="vGrid" class="stack" hidden>
+    <h2>目录</h2><p class="lead">有底色的是已完成的题。点任意一题跳过去。</p>
+    <div class="grid" id="gridBox"></div>
+    <div class="row"><button id="bGridBack" type="button">返回</button><button id="bFirstOpen" type="button">跳到第一道未完成的题</button></div>
+  </section>
+  <section id="vEnd" class="stack" hidden></section>
+</main>
+
+<script>
+const ITEMS = __ITEMS__;
+const LS = 'vc_audit_v1';
+const state = {answers:{}, submitted:null, cur:0, view:'intro'};
+let db = null, cloud = 'pending';
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function lsLoad(){ try{ const s = JSON.parse(localStorage.getItem(LS) || '{}'); Object.assign(state.answers, s.answers || {}); state.submitted = s.submitted || null; if (Number.isInteger(s.cur)) state.cur = s.cur; }catch(e){} }
+function lsSave(){ try{ localStorage.setItem(LS, JSON.stringify({answers:state.answers, submitted:state.submitted, cur:state.cur})); }catch(e){} }
+
+function complete(it){ const a = state.answers[it.id]; if (!a) return false;
+  if (it.kind === 'pair') return !!a.v; return it.rsids.every(r => a.v && a.v[r]); }
+function nDone(){ return ITEMS.filter(complete).length; }
+
+function setSave(txt, off){ const s = $('saveS'); s.textContent = txt; s.classList.toggle('off', !!off); }
+const writing = {}, dirty = {};
+async function push(id){
+  lsSave();
+  if (!db){ setSave(cloud === 'off' ? '云端不可用，仅保存在本机' : '已保存在本机', cloud === 'off'); return; }
+  if (writing[id]){ dirty[id] = true; return; }
+  writing[id] = true; setSave('正在保存…');
+  try{ await db.doc('answers/' + id).set(state.answers[id]); setSave('已保存到云端'); }
+  catch(e){ setSave('云端保存失败，已保存在本机', true); }
+  writing[id] = false;
+  if (dirty[id]){ dirty[id] = false; push(id); }
+}
+
+function mark(text, rsids, outcome){
+  let h = esc(text);
+  if (outcome){ const o = esc(outcome).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    if (o.length >= 3) h = h.replace(new RegExp('(' + o + ')', 'gi'), '<mark class="oc">$1</mark>'); }
+  for (const r of rsids){ const n = r.slice(2);
+    h = h.replace(new RegExp('\\b(rs\\s?' + n + ')\\b', 'gi'), '<mark class="rs">$1</mark>'); }
+  return h;
+}
+
+function show(v){ for (const k of ['Intro','Item','Grid','End']) $('v' + k).hidden = (k.toLowerCase() !== v);
+  state.view = v; window.scrollTo(0, 0); }
+
+function renderProg(){ const d = nDone(), n = ITEMS.length;
+  $('progT').textContent = `已完成 ${d} / ${n}` + (state.submitted ? ' · 已提交' : '');
+  $('progI').style.width = (100 * d / n) + '%';
+  $('introProg').textContent = d ? `已完成 ${d} 题，上次停在第 ${state.cur + 1} 题` : '';
+}
+
+const PAIR_OPTS = [['yes','有关联','摘要报告存在关联'],['no','报告无关联','摘要说没有关联或不显著'],
+                   ['none','无结论','提到了，但没下结论'],['notstudied','不相关','摘要没研究这对关系']];
+
+function renderItem(){
+  const it = ITEMS[state.cur], a = state.answers[it.id] || {}, locked = !!state.submitted;
+  const part = it.kind === 'pair' ? '第一部分 · 判断一对关系' : '第二部分 · 查漏';
+  let q, body;
+  if (it.kind === 'pair'){
+    q = `<p class="q">摘要对 <span class="rsid">${esc(it.rsid)}</span> 与「${esc(it.outcome)}」的结论是？</p>`;
+    body = `<div class="choices" role="group" aria-label="选项">` + PAIR_OPTS.map(([v,l,s]) =>
+      `<button type="button" id="c_${v}" data-v="${v}" class="${a.v === v ? 'on' : ''}" ${locked ? 'disabled' : ''}>${l}<small>${s}</small></button>`).join('') + `</div>`;
+  } else {
+    q = `<p class="q">下列变异中，摘要报告与某个疾病或性状存在有统计学支持的关联的是？</p>`;
+    body = `<div class="box stack">` + it.rsids.map(r => { const x = (a.v || {})[r];
+      return `<div class="rsrow"><span class="rsid">${esc(r)}</span><span class="seg">
+        <button type="button" class="${x === 'yes' ? 'on' : ''}" data-r="${r}" data-x="yes" ${locked ? 'disabled' : ''}>有</button>
+        <button type="button" class="n ${x === 'no' ? 'on' : ''}" data-r="${r}" data-x="no" ${locked ? 'disabled' : ''}>无</button></span></div>`; }).join('') + `</div>`;
+  }
+  const rs = it.kind === 'pair' ? [it.rsid] : it.rsids;
+  $('vItem').innerHTML = `
+    <div class="meta">${part} · ${it.id} · 第 ${state.cur + 1} / ${ITEMS.length} 题</div>
+    ${q}
+    <article class="box paper"><h3>${mark(it.title, rs, it.outcome)}</h3><div class="abs">${mark(it.abstract || '(无摘要)', rs, it.outcome)}</div></article>
+    ${body}
+    <textarea id="note" placeholder="备注（可不填）" ${locked ? 'disabled' : ''}>${esc(a.note || '')}</textarea>
+    <div class="nav"><button type="button" id="bPrev" ${state.cur === 0 ? 'disabled' : ''}>上一题</button>
+      <button type="button" id="bHome">说明</button>
+      <button type="button" class="pri" id="bNext">${state.cur === ITEMS.length - 1 ? '完成' : '下一题'}</button></div>`;
+  $('vItem').querySelectorAll('.choices button').forEach(b => b.onclick = () => {
+    setAns(it.id, {v: b.dataset.v}); renderItem(); setTimeout(() => go(1), 260); });
+  $('vItem').querySelectorAll('.seg button').forEach(b => b.onclick = () => {
+    const v = Object.assign({}, (state.answers[it.id] || {}).v || {}); v[b.dataset.r] = b.dataset.x;
+    setAns(it.id, {v}); renderItem(); });
+  $('note').onchange = e => setAns(it.id, {note: e.target.value});
+  $('bPrev').onclick = () => go(-1); $('bNext').onclick = () => go(1); $('bHome').onclick = () => { renderProg(); show('intro'); };
+}
+
+function setAns(id, patch){ if (state.submitted) return;
+  state.answers[id] = Object.assign({}, state.answers[id] || {}, patch, {at: new Date().toISOString()});
+  renderProg(); push(id); }
+
+function go(d){ const n = state.cur + d;
+  if (n >= ITEMS.length){ renderEnd(); show('end'); return; }
+  state.cur = Math.max(0, n); lsSave(); renderItem(); show('item'); }
+
+function renderGrid(){ $('gridBox').innerHTML = ITEMS.map((it, i) =>
+  `<button type="button" data-i="${i}" class="${complete(it) ? 'done' : ''} ${i === state.cur ? 'cur' : ''}">${it.id}</button>`).join('');
+  $('gridBox').querySelectorAll('button').forEach(b => b.onclick = () => { state.cur = +b.dataset.i; renderItem(); show('item'); }); }
+
+function renderEnd(){ const d = nDone(), n = ITEMS.length, open = ITEMS.filter(i => !complete(i));
+  let h = `<h1>${state.submitted ? '已提交，谢谢' : '全部题目'}</h1>`;
+  if (state.submitted) h += `<p class="lead">提交时间 ${esc(new Date(state.submitted).toLocaleString('zh-CN'))}。答案已锁定，可以回看。</p>`;
+  else if (open.length) h += `<p>还有 ${open.length} 题未完成：${open.slice(0, 12).map(i => i.id).join('、')}${open.length > 12 ? ' 等' : ''}。</p>
+      <div class="row"><button class="pri" type="button" id="bOpen">去第一道未完成的题</button></div>`;
+  else h += `<p>${d} / ${n} 题都已完成。提交后答案锁定，结果会自动进入分析。</p>
+      <div class="row" id="subRow"><button class="pri" type="button" id="bSubmit">提交</button></div>`;
+  h += `<div class="row"><button type="button" id="bEndHome">回到说明</button></div>`;
+  $('vEnd').innerHTML = h;
+  if ($('bOpen')) $('bOpen').onclick = firstOpen;
+  if ($('bSubmit')) $('bSubmit').onclick = () => { $('subRow').innerHTML =
+      `<span>确认提交？提交后不能再修改。</span><button class="pri" type="button" id="bYes">确认提交</button><button type="button" id="bNo">再看看</button>`;
+    $('bNo').onclick = renderEnd; $('bYes').onclick = submit; };
+  $('bEndHome').onclick = () => { renderProg(); show('intro'); };
+}
+
+async function submit(){ const at = new Date().toISOString();
+  if (db){ try{ await db.doc('meta/state').set({submitted: true, at, n_done: nDone(), n_items: ITEMS.length}); }
+    catch(e){ $('vEnd').insertAdjacentHTML('beforeend', '<p class="notice">云端提交失败，请稍后再点一次，或导出进度文件发给我。</p>'); return; } }
+  state.submitted = at; lsSave(); renderProg(); renderEnd(); }
+
+function firstOpen(){ const i = ITEMS.findIndex(x => !complete(x)); state.cur = i < 0 ? 0 : i; renderItem(); show('item'); }
+
+$('bStart').onclick = () => { if (nDone() === ITEMS.length){ renderEnd(); show('end'); } else { renderItem(); show('item'); } };
+$('bRules').onclick = () => { renderProg(); show('intro'); $('rulesBody').scrollIntoView(); };
+$('bGrid').onclick = () => { renderGrid(); show('grid'); };
+$('bGridBack').onclick = () => { if (state.view === 'grid'){ renderItem(); show('item'); } };
+$('bFirstOpen').onclick = firstOpen;
+
+$('bExport').onclick = async () => {
+  const txt = JSON.stringify({form: 'varclaims_reader_check_v1', exported: new Date().toISOString(), answers: state.answers, submitted: state.submitted});
+  const dl = await claude.use('downloads').catch(() => null);
+  if (dl){ try{ await dl.save({filename: '变异判读核对_进度.json', data: txt}); $('ioMsg').textContent = '已导出。'; return; }catch(e){} }
+  const t = $('exportTxt'); t.hidden = false; t.value = txt; t.select();
+  try{ await navigator.clipboard.writeText(txt); $('ioMsg').textContent = '无法直接保存文件，进度已复制到剪贴板（也显示在上面）。'; }
+  catch(e){ $('ioMsg').textContent = '无法直接保存文件，请复制上面的文字保存。'; }
+};
+$('fImport').onchange = async e => { const f = e.target.files[0]; if (!f) return;
+  try{ const j = JSON.parse(await f.text()); if (j.form !== 'varclaims_reader_check_v1') throw 0;
+    let k = 0; for (const [id, a] of Object.entries(j.answers || {})){
+      if (!ITEMS.some(i => i.id === id)) continue;
+      const cur = state.answers[id]; if (!cur || (a.at || '') > (cur.at || '')){ state.answers[id] = a; push(id); k++; } }
+    renderProg(); $('ioMsg').textContent = `已导入 ${k} 题。`; }
+  catch(err){ $('ioMsg').textContent = '这个文件不是本问卷导出的进度文件。'; } };
+
+lsLoad(); renderProg();
+(async () => {
+  const timer = setTimeout(() => { if (cloud === 'pending'){ cloud = 'off'; setSave('云端不可用，仅保存在本机', true); } }, 10000);
+  const d = await claude.use('db').catch(() => null);
+  if (!d){ clearTimeout(timer); cloud = 'off'; setSave('云端不可用，仅保存在本机', true); return; }
+  try{
+    const [snap, meta] = await Promise.all([d.collection('answers').get(), d.doc('meta/state').get()]);
+    clearTimeout(timer); db = d; cloud = 'on';
+    const up = [];
+    for (const s of snap.docs){ const a = s.data(); const cur = state.answers[s.id];
+      if (!cur || (a.at || '') >= (cur.at || '')) state.answers[s.id] = a; }
+    for (const [id, a] of Object.entries(state.answers)){ const remote = snap.docs.find(s => s.id === id);
+      if (!remote || (a.at || '') > (remote.data().at || '')) up.push(id); }
+    if (meta.exists && meta.data().submitted) state.submitted = meta.data().at;
+    lsSave(); renderProg(); setSave('已连接云端，自动保存');
+    up.forEach(push);
+    if (state.view === 'item') renderItem();
+  }catch(e){ clearTimeout(timer); cloud = 'off'; setSave('云端读取失败，仅保存在本机', true); }
+})();
+</script>

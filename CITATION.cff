@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this atlas, please cite it as below."
+title: "Variant–Trait Claim Atlas"
+version: 1.0.0
+date-released: 2026-11-17
+license: CC-BY-4.0
+authors:
+  - family-names: "Hu"
+    given-names: "Yuanchun"
+    affiliation: "School of Biomedical Engineering, Hubei University of Medicine"
+  - family-names: "Xu"
+    given-names: "Zhida"
+    affiliation: "School of Biomedical Engineering, Hubei University of Medicine"
+  - family-names: "Jiang"
+    given-names: "Shanqing"
+    affiliation: "Hubei Key Laboratory of Embryonic Stem Cell Research, Taihe Hospital, Hubei University of Medicine"
+  - family-names: "Huang"
+    given-names: "Linsheng"
+    affiliation: "The First Clinical College, Hubei University of Medicine"
+  - family-names: "Pan"
+    given-names: "Mengjie"
+    affiliation: "The First Clinical College, Hubei University of Medicine"
+  - family-names: "Luo"
+    given-names: "Shiqi"
+    affiliation: "School of Biomedical Engineering, Hubei University of Medicine"
+  - family-names: "Zhou"
+    given-names: "Han"
+    affiliation: "The First Clinical College, Hubei University of Medicine"
+  - family-names: "Guo"
+    given-names: "Xingrong"
+    affiliation: "Hubei Key Laboratory of Embryonic Stem Cell Research, Taihe Hospital, Hubei University of Medicine"
+repository-code: "https://github.com/zxu69461-creator/variant-claim-atlas"
+url: "https://zxu69461-creator.github.io/variant-claim-atlas/"

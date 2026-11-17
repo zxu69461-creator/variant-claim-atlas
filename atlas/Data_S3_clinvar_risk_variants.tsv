@@ -1,0 +1,240 @@
+rsid	gene_clinvar	clinvar_significance	clinvar_conditions	reported_associations	papers	distinct_traits	share_supported	matched_null	support_class	genome_wide_association_any_trait_variant	genome_wide_association_any_trait_variant_or_proxy	clinvar_condition_in_ontology	genome_wide_support_for_clinvar_condition
+rs738409	PNPLA3	Conflicting classifications of pathogenicity; risk factor	Hepatic steatosis; NAFLD1; not provided	393	306	52	0.9109	0.0176	mostly (>=50%)	yes	yes	yes	yes
+rs7903146	TCF7L2	risk factor	Diabetes mellitus type 2, susceptibility to	340	274	69	0.8941	0.05	mostly (>=50%)	yes	yes	no	no
+rs1800795	IL6	other; risk factor	Cholangiocarcinoma; Crohn disease-associated growth failure, susceptibility to; Diabetes mellitus type 2, susceptibility to; Diabetes mellitus, type 1, susceptibility to; Kaposi sarcoma	234	197	127	0.0256	0.0229	rarely (<5%)	yes	yes	yes	no
+rs429358	APOE	Conflicting classifications of pathogenicity; other; risk factor	Alzheimer disease; Alzheimer disease 2; Alzheimer disease 4; Familial hypercholesterolemia; Lipoprotein glomerulopathy; Primary degenerative dementia of the Alzheimer type, presenile onset; Warfarin response; not provided; not specified	121	108	57	0.843	0.0187	mostly (>=50%)	yes	yes	yes	yes
+rs7574865	STAT4	risk factor	Systemic lupus erythematosus, susceptibility to, 11	120	95	42	0.8083	0.0167	mostly (>=50%)	yes	yes	yes	no
+rs2234693	ESR1	risk factor	Myocardial infarction, susceptibility to	112	89	63	0.0	0.0174	rarely (<5%)	yes	yes	yes	no
+rs16944	IL1B	association	Antisynthetase syndrome	111	101	81	0.0	0.0166	rarely (<5%)	yes	yes	yes	no
+rs1229984	ADH1B	protective	Aerodigestive tract cancer, squamous cell, alcohol-related, protection against; Alcohol dependence	97	66	59	0.6804	0.0039	mostly (>=50%)	yes	yes	yes	yes
+rs12255372	TCF7L2	risk factor	Diabetes mellitus type 2, susceptibility to	96	85	25	0.2917	0.0511	partly (5-50%)	no	yes	no	no
+rs1333049	CDKN2B-AS1	risk factor	Three Vessel Coronary Disease	93	74	38	0.871	0.0338	mostly (>=50%)	yes	yes	no	no
+rs4880	SOD2	Conflicting classifications of pathogenicity; risk factor	Microvascular complications of diabetes, susceptibility to, 6; SOD2 POLYMORPHISM	93	87	64	0.0	0.0267	rarely (<5%)	no	no	yes	no
+rs13266634	SLC30A8	Benign; risk factor	Diabetes mellitus type 2, susceptibility to; SLC30A8-related disorder	76	70	15	0.9737	0.0587	mostly (>=50%)	yes	yes	no	no
+rs20541	IL13	Benign; risk factor	Allergic rhinitis, susceptibility to; IL13-related disorder; Inherited susceptibility to asthma	75	61	32	0.5333	0.016	mostly (>=50%)	yes	yes	yes	no
+rs1143634	IL1B	Benign; Affects; association; other	Antisynthetase syndrome; Cholangiocarcinoma; Endometriosis; IL1B-related disorder	71	64	52	0.0	0.0105	rarely (<5%)	yes	yes	yes	no
+rs1061170	CFH	Pathogenic; risk factor	Age related macular degeneration 4; Basal laminar drusen	71	65	30	0.6761	0.0087	mostly (>=50%)	yes	yes	yes	yes
+rs2070744	NOS3	protective	Metabolic syndrome, susceptibility to	70	63	49	0.0	0.0245	rarely (<5%)	no	yes	no	no
+rs35705950	MUC5B	Benign; risk factor	Antisynthetase syndrome; Interstitial lung disease 2; PULMONARY FIBROSIS, IDIOPATHIC, SUSCEPTIBILITY TO; Susceptibility to coronavirus disease (COVID-19) severity and mortality due to low plasma levels of MUC5B; not provided	70	61	10	0.8857	0.0072	mostly (>=50%)	yes	yes	yes	no
+rs1143627	IL1B	risk factor	Gastric cancer susceptibility after h. pylori infection	57	49	42	0.0	0.0126	rarely (<5%)	yes	yes	no	no
+rs755622	MIF	risk factor	-	53	42	46	0.0	0.0127	rarely (<5%)	yes	yes	no	no
+rs1421085	FTO	risk factor	OBESITY (BMIQ14), SUSCEPTIBILITY TO	52	42	23	0.9808	0.077	mostly (>=50%)	yes	yes	no	no
+rs11200638	HTRA1	risk factor	Age related macular degeneration 7	52	46	11	0.9038	0.0052	mostly (>=50%)	yes	yes	yes	yes
+rs1360780	FKBP5	drug response; risk factor	Antidepressant drug treatment, accelerated response to	51	50	30	0.0	0.0297	rarely (<5%)	no	yes	no	no
+rs4402960	IGF2BP2	risk factor	Diabetes mellitus type 2, susceptibility to	49	41	14	0.9796	0.0596	mostly (>=50%)	yes	yes	no	no
+rs3825942	LOXL1	Benign; risk factor	Exfoliation syndrome, susceptibility to; LOXL1-related disorder	45	39	5	0.9778	0.0025	mostly (>=50%)	yes	yes	yes	no
+rs243865	MMP2	association	Lip and oral cavity carcinoma	43	41	34	0.0	0.0202	rarely (<5%)	no	yes	yes	no
+rs10757274	CDKN2B-AS1	risk factor	Three Vessel Coronary Disease	43	38	17	0.9302	0.0385	mostly (>=50%)	yes	yes	no	no
+rs1048661	LOXL1	risk factor	Exfoliation syndrome, susceptibility to	40	35	6	0.95	0.0075	mostly (>=50%)	yes	yes	yes	no
+rs1800925	IL13	risk factor	Inherited susceptibility to asthma	40	36	24	0.625	0.0105	mostly (>=50%)	yes	yes	yes	no
+rs1799724	TNF	risk factor		38	34	33	0.0526	0.0059	partly (5-50%)	no	yes	no	no
+rs909253	LTA	risk factor	Myocardial infarction, susceptibility to; Psoriatic arthritis, susceptibility to	33	31	24	0.0	0.0214	rarely (<5%)	yes	yes	yes	no
+rs776746	CYP3A5	association; drug response; risk factor	Hypertension, salt-sensitive essential, susceptibility to; Tacrolimus response; refractory myasthenia gravis	32	26	24	0.0312	0.0061	rarely (<5%)	yes	yes	no	no
+rs1799963	F2	Pathogenic/Likely pathogenic/Pathogenic, low penetrance/Established risk allele; risk factor	Cerebral palsy; Congenital prothrombin deficiency; Inborn genetic diseases; Ischemic stroke; Pregnancy loss, recurrent, susceptibility to, 2; Thrombophilia caused by F2 prothrombin deficiency; Thrombophilia due to thrombin defect; Thrombophilia due to thrombin defect;Pregnancy loss, recurrent, susce	32	31	14	0.4688	0.0015	partly (5-50%)	yes	yes	yes	yes
+rs4977574	CDKN2B-AS1	risk factor	Three Vessel Coronary Disease	31	29	17	0.9032	0.0333	mostly (>=50%)	yes	yes	no	no
+rs4939827	SMAD7	risk factor	Colorectal cancer, susceptibility to, 3	29	27	11	0.7586	0.02	mostly (>=50%)	yes	yes	yes	no
+rs3834129	CASP8	protective	Lung cancer, protection against	29	21	14	0.0	0.0081	rarely (<5%)	no	no	no	no
+rs4988235	MCM6	association	LACTASE PERSISTENCE	29	19	16	0.5862	0.0659	mostly (>=50%)	yes	yes	no	no
+rs763110	FASLG	risk factor	LUNG CANCER, SUSCEPTIBILITY TO	29	22	18	0.0	0.018	rarely (<5%)	no	no	no	no
+rs2165241	LOXL1	risk factor	Exfoliation syndrome, susceptibility to	28	24	6	0.7143	0.0045	mostly (>=50%)	yes	yes	yes	no
+rs7754840	CDKAL1	risk factor	Obesity	26	26	8	0.9231	0.0458	mostly (>=50%)	yes	yes	yes	no
+rs405509	APOE	risk factor	Coronary artery disease, severe, susceptibility to	26	25	17	0.3846	0.0257	partly (5-50%)	yes	yes	yes	no
+rs1800012	COL1A1	association	Bone mineral density variation quantitative trait locus	26	24	17	0.0	0.0173	rarely (<5%)	no	no	no	no
+rs2435357	RET	Benign; risk factor	Aganglionic megacolon; Hirschsprung disease, susceptibility to, 1; Multiple endocrine neoplasia, type 2; not provided; not specified	25	22	4	0.92	0.0005	mostly (>=50%)	yes	yes	yes	yes
+rs1143623	IL1B	association	Antisynthetase syndrome	25	22	21	0.0	0.0129	rarely (<5%)	yes	yes	yes	no
+rs4132601	IKZF1	association	Leukemia, acute lymphocytic, susceptibility to, 2	25	20	9	0.8	0.0061	mostly (>=50%)	yes	yes	yes	no
+rs12913832	HERC2	association	SKIN/HAIR/EYE PIGMENTATION 1, BLUE/NONBLUE EYES	24	21	8	0.9583	0.0023	mostly (>=50%)	yes	yes	no	no
+rs1801253	ADRB1	Benign; association	ADRB1-related disorder; Pulmonary disease, chronic obstructive, susceptibility to; not provided	23	17	17	0.7391	0.0327	mostly (>=50%)	yes	yes	yes	no
+rs659366	UCP2	risk factor	BODY MASS INDEX QUANTITATIVE TRAIT LOCUS 4	23	15	18	0.0	0.0409	rarely (<5%)	no	no	no	no
+rs5743708	TLR2	risk factor	Mycobacterium tuberculosis, susceptibility to	23	21	17	0.0	0.0014	rarely (<5%)	no	no	no	no
+rs1800630	TNF	protective	Alzheimer disease, protection against	23	22	22	0.1304	0.0139	partly (5-50%)	yes	yes	no	no
+rs10936599	MYNN	association	Chronic osteomyelitis	21	20	15	0.8095	0.0122	mostly (>=50%)	yes	yes	no	no
+rs4833095	TLR1	Benign; risk factor	Leprosy, susceptibility to, 5; TLR1-related disorder	21	19	17	0.1429	0.008	partly (5-50%)	yes	yes	yes	no
+rs1799998	CYP11B2	association	Aldosterone to renin ratio, increased	21	15	17	0.1905	0.0231	partly (5-50%)	yes	yes	no	no
+rs10954213	IRF5	risk factor	Systemic lupus erythematosus, susceptibility to, 10	20	16	13	0.3	0.024	partly (5-50%)	yes	yes	yes	no
+rs6548238	-	risk factor	Obesity	20	13	11	0.8	0.046	mostly (>=50%)	yes	yes	yes	yes
+rs1410996	CFH	risk factor	Age related macular degeneration 4	19	19	6	0.8947	0.0073	mostly (>=50%)	yes	yes	yes	yes
+rs1800562	HFE	Pathogenic/Pathogenic, low penetrance; risk factor	6 conditions; 7 conditions; Bronze diabetes; Cardiomyopathy; HFE-related disorder; Hemochromatosis type 1; Hereditary cancer-predisposing syndrome; Hereditary hemochromatosis; Inborn genetic diseases; Juvenile hemochromatosis; Neuroendocrine neoplasm; Porphyrinuria;Cutaneous photosensitivity; not pr	19	18	16	0.5263	0.0025	mostly (>=50%)	yes	yes	yes	yes
+rs1063192	CDKN2B	protective	Neoplasm; Three Vessel Coronary Disease	19	14	10	0.6316	0.0182	mostly (>=50%)	yes	yes	yes	yes
+rs12252	IFITM3	risk factor	Influenza, severe, susceptibility to	19	18	8	0.0	0.0019	rarely (<5%)	no	no	yes	no
+rs2066847	NOD2	Conflicting classifications of pathogenicity; association	Autoinflammatory syndrome; Blau syndrome; Blau syndrome;Crohn disease; Crohn’s Disease; Inflammatory bowel disease 1; Regional enteritis;Blau syndrome; Yao syndrome; Yao syndrome;Inflammatory bowel disease 1;Blau syndrome; not provided; not specified	18	10	13	0.3889	0.0051	partly (5-50%)	yes	yes	yes	yes
+rs4950928	CHI3L1	risk factor	Asthma-related traits, susceptibility to, 7	18	17	7	0.3333	0.0302	partly (5-50%)	yes	yes	no	no
+rs2076530	BTNL2	risk factor	Sarcoidosis, susceptibility to, 2	17	15	5	0.7647	0.0065	mostly (>=50%)	yes	yes	no	no
+rs1617640	EPO	risk factor	Microvascular complications of diabetes, susceptibility to, 2	16	12	13	0.25	0.0434	partly (5-50%)	yes	yes	yes	no
+rs10887800	RNLS	association	Family history	16	12	11	0.0	0.0292	rarely (<5%)	no	no	no	no
+rs2735940	TERT	Uncertain significance; association	Chronic osteomyelitis; Coronary artery disease, susceptibility to	16	14	11	0.25	0.0362	partly (5-50%)	yes	yes	no	no
+rs17070145	WWC1	association	Memory quantitative trait locus	16	13	8	0.0	0.0266	rarely (<5%)	no	yes	no	no
+rs2333227	MPO	protective; risk factor	Lung cancer, protection against, in smokers	15	14	12	0.0	0.0101	rarely (<5%)	yes	yes	no	no
+rs2234663	IL1RN	Pathogenic; risk factor	Gastric cancer susceptibility after h. pylori infection; Microvascular complications of diabetes, susceptibility to, 4	15	12	12	0.0	0.001	rarely (<5%)	no	no	yes	no
+rs1041981	LTA	Benign; risk factor	LTA-related disorder; Myocardial infarction, susceptibility to	15	14	14	0.0	0.0107	rarely (<5%)	yes	yes	yes	no
+rs7138803	-	risk factor	Obesity	14	9	10	0.3571	0.0647	partly (5-50%)	yes	yes	yes	yes
+rs4804803	CD209	protective; risk factor	Dengue fever, protection against; Mycobacterium tuberculosis, susceptibility to; Susceptibility to HIV infection	14	12	11	0.0	0.0085	rarely (<5%)	no	no	yes	no
+rs1800588	LIPC	association	High density lipoprotein cholesterol level quantitative trait locus 12	14	11	7	0.8571	0.0472	mostly (>=50%)	yes	yes	no	no
+rs1611115	DBH	association	Dopamine beta-hydroxylase polymorphism	13	11	9	0.0	0.0231	rarely (<5%)	yes	yes	no	no
+rs11196205	TCF7L2	risk factor	Diabetes mellitus type 2, susceptibility to	13	13	5	0.0	0.0602	rarely (<5%)	yes	yes	no	no
+rs55705857	CCDC26	risk factor	Glioma susceptibility 7	13	10	10	0.7692	0.0059	mostly (>=50%)	yes	yes	yes	no
+rs11887534	ABCG5	Benign/Likely benign; association	ABCG8-related disorder; Cardiovascular phenotype; Gallbladder disease 4; Gallstones; Sitosterolemia; Sitosterolemia 1; Sitosterolemia 2; not provided; not specified	13	11	4	0.6923	0.0016	mostly (>=50%)	yes	yes	yes	yes
+rs2814778	ACKR1	Established risk allele; association; protective	DUFFY BLOOD GROUP SYSTEM, FY(a-b-) PHENOTYPE; Resistance to Plasmodium vivax infection; White blood cell count quantitative trait locus 1	13	13	8	0.4615	0.0019	partly (5-50%)	yes	yes	no	no
+rs1107946	COL1A1	association	Bone mineral density variation quantitative trait locus	13	9	10	0.0	0.0341	rarely (<5%)	no	no	no	no
+rs25489	XRCC1	association	Laryngeal squamous cell carcinoma	13	13	11	0.0	0.0035	rarely (<5%)	no	no	yes	no
+rs10835638	FSHB	association	Hypogonadotropic hypogonadism 24 without anosmia	12	9	7	0.25	0.0176	partly (5-50%)	yes	yes	yes	no
+rs5743810	TLR6	protective	Leprosy, susceptibility to, 1	12	11	10	0.0	0.017	rarely (<5%)	no	yes	yes	no
+rs1061581	HSPA1A	association	Chronic obstructive pulmonary disease	12	10	9	0.0	0.0014	rarely (<5%)	no	no	yes	no
+rs28929474	SERPINA1	Pathogenic/Likely pathogenic; risk factor	Alpha-1-antitrypsin deficiency; Alpha-1-antitrypsin deficiency;Chronic obstructive pulmonary disease; Chronic obstructive pulmonary disease; FRAXE; Inborn genetic diseases; Neurodevelopmental disorder; PI Z; PI Z(AUGSBURG); PI Z(TUN); SERPINA1-related disorder; See cases; Susceptibility to severe co	12	10	11	0.75	0.0025	mostly (>=50%)	yes	yes	yes	yes
+rs13118928	HHIP	association	Chronic obstructive pulmonary disease; Chronic obstructive pulmonary disease, biomass related	11	7	6	1.0	0.0295	mostly (>=50%)	yes	yes	yes	yes
+rs751141	EPHX2	risk factor	Hypercholesterolemia, familial, 1	11	10	9	0.0	0.0124	rarely (<5%)	yes	yes	yes	no
+rs3087456	CIITA	risk factor	Rheumatoid arthritis	11	6	7	0.0	0.0135	rarely (<5%)	yes	yes	yes	no
+rs2274700	CFH	risk factor	Age related macular degeneration 4	10	9	5	0.9	0.004	mostly (>=50%)	yes	yes	yes	yes
+rs2240340	PADI4	association	Rheumatoid arthritis	10	9	4	0.3	0.0233	partly (5-50%)	yes	yes	yes	no
+rs1799864	CCR2	Benign; protective	CCR2-related disorder; Susceptibility to HIV infection	10	9	10	0.0	0.0085	rarely (<5%)	yes	yes	yes	no
+rs2066844	NOD2	Conflicting classifications of pathogenicity; association	Autoinflammatory syndrome; Blau syndrome; Crohn disease; Inflammatory bowel disease 1; Inflammatory bowel disease 1;Yao syndrome; Inflammatory bowel disease 1;Yao syndrome;Blau syndrome; Regional enteritis;Blau syndrome; Yao syndrome; not provided; not specified	10	10	9	0.4	0.0104	partly (5-50%)	yes	yes	yes	yes
+rs2066845	NOD2	Conflicting classifications of pathogenicity; association	Autoinflammatory syndrome; Blau syndrome; Inflammatory bowel disease 1; Inflammatory bowel disease 1;Blau syndrome;Psoriatic arthritis, susceptibility to;Yao syndrome; Inflammatory bowel disease 1;Blau syndrome;Yao syndrome; Inflammatory bowel disease 1;Yao syndrome; Regional enteritis;Blau syndrome	10	9	9	0.4	0.0023	partly (5-50%)	yes	yes	yes	no
+rs5743618	TLR1	Conflicting classifications of pathogenicity; protective	LEPROSY, PROTECTION AGAINST; Leprosy, susceptibility to, 1; TLR1-related disorder	10	10	8	0.1	0.0099	partly (5-50%)	yes	yes	yes	no
+rs698	ADH1C	protective	Alcohol dependence	9	9	8	0.2222	0.0421	partly (5-50%)	no	yes	yes	yes
+rs1805097	IRS2	Benign; risk factor	IRS2-related disorder; Type 2 diabetes mellitus	9	6	7	0.3333	0.0446	partly (5-50%)	yes	yes	yes	yes
+rs9264942	HLA-C	risk factor	HIV-1 VIREMIA, SUSCEPTIBILITY TO	9	9	6	0.4444	0.0072	partly (5-50%)	yes	yes	no	no
+rs2609255	FAM13A	Uncertain significance; association	Chronic obstructive pulmonary disease; Combined pulmonary fibrosis-emphysema syndrome; Interstitial lung disease 2; Susceptibility to severe coronavirus disease (COVID-19)	9	8	5	0.5556	0.0127	mostly (>=50%)	yes	yes	yes	yes
+rs1800750	TNF	risk factor	Malaria, cerebral, susceptibility to	8	6	8	0.0	0.0009	rarely (<5%)	yes	yes	no	no
+rs1828591	HHIP	association	Chronic obstructive pulmonary disease; Chronic obstructive pulmonary disease, biomass related	8	7	3	1.0	0.0273	mostly (>=50%)	yes	yes	yes	yes
+rs6742078	UGT1A1	Benign; association	BILIRUBIN, SERUM LEVEL OF, QUANTITATIVE TRAIT LOCUS 1; Gilbert syndrome	8	6	5	0.625	0.0121	mostly (>=50%)	yes	yes	yes	yes
+rs7794745	CNTNAP2	risk factor	Autism, susceptibility to, 15	8	8	4	0.0	0.0188	rarely (<5%)	no	no	yes	no
+rs17879961	CHEK2	Conflicting classifications of pathogenicity; risk factor	Bone osteosarcoma;CHEK2-related cancer predisposition;Familial prostate cancer; Bone osteosarcoma;CHEK2-related cancer predisposition;Familial prostate cancer;Familial cancer of breast; Bone osteosarcoma;Colorectal cancer;CHEK2-related cancer predisposition;Familial prostate cancer;Familial cancer o	8	6	7	0.625	0.0007	mostly (>=50%)	yes	yes	yes	yes
+rs1748033	PADI4	Benign; association	PADI4-related disorder; Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	8	8	3	0.875	0.0271	mostly (>=50%)	no	yes	yes	yes
+rs11053646	OLR1	Benign; risk factor	Myocardial infarction, susceptibility to; OLR1-related disorder	8	7	7	0.0	0.0149	rarely (<5%)	yes	yes	yes	no
+rs2975760	CAPN10	risk factor	Type 2 diabetes mellitus 1, susceptibility to	8	8	3	0.0	0.0219	rarely (<5%)	no	yes	no	no
+rs1799987	CCR5	Conflicting classifications of pathogenicity; protective	Acquired immunodeficiency syndrome, delayed progression to; CCR5 PROMOTER POLYMORPHISM; CCR5-related disorder; Susceptibility to HIV infection	8	8	8	0.0	0.0249	rarely (<5%)	no	no	yes	no
+rs3842570	CAPN10	risk factor	Type 2 diabetes mellitus 1, susceptibility to	8	5	6	0.0	0.0059	rarely (<5%)	no	no	no	no
+rs2227956	HSPA1L	association	Chronic obstructive pulmonary disease	8	8	7	0.0	0.0006	rarely (<5%)	yes	yes	yes	no
+rs1050501	FCGR2B	protective; risk factor	Malaria, resistance to; Systemic lupus erythematosus, susceptibility to	7	7	3	0.0	0.0201	rarely (<5%)	no	yes	no	no
+rs1048990	PSMA6	Benign; risk factor	Myocardial infarction, susceptibility to; PSMA6-related disorder	7	7	7	0.0	0.0136	rarely (<5%)	yes	yes	yes	no
+rs5491	ICAM1	Benign; risk factor	ICAM1-related disorder; Malaria, cerebral, susceptibility to	7	6	5	0.0	0.0013	rarely (<5%)	yes	yes	no	no
+rs11206510	PCSK9	association	Familial hypercholesterolemia	7	7	5	0.4286	0.0174	partly (5-50%)	yes	yes	yes	no
+rs2239704	LTA	risk factor	Leprosy, early-onset, susceptibility to	7	6	7	0.0	0.0099	rarely (<5%)	yes	yes	no	no
+rs3737787	USF1	risk factor	Hyperlipidemia, familial combined, susceptibility to	7	7	7	0.0	0.055	rarely (<5%)	no	yes	no	no
+rs138213197	HOXB13	Pathogenic/Likely pathogenic; association	Breast and/or ovarian cancer; Carcinoma of pancreas; Familial prostate cancer; HOXB13-Related Cancer Predisposition; HOXB13-related disorder; Hereditary cancer-predisposing syndrome; Prostate cancer susceptibility; Prostate cancer, hereditary, 9; not provided	7	7	2	1.0	0.0045	mostly (>=50%)	yes	yes	yes	yes
+rs2070197	IRF5	risk factor	SYSTEMIC LUPUS ERYTHEMATOSUS, ASSOCIATION WITH SUSCEPTIBILITY TO, 10	7	5	4	1.0	0.0269	mostly (>=50%)	yes	yes	no	no
+rs11125529	ACYP2	association	Chronic osteomyelitis	7	7	6	0.0	0.0223	rarely (<5%)	yes	yes	no	no
+rs73885319	APOL1	Conflicting classifications of pathogenicity; risk factor	APOL1-associated kidney disease; Focal segmental glomerulosclerosis; Focal segmental glomerulosclerosis 4, susceptibility to; Focal segmental glomerulosclerosis;Sickled erythrocytes; Glomerulonephritis; Hyalinosis, Segmental Glomerular; Nephrotic range proteinuria; Proteinuria; Steroid-resistant nep	7	4	7	0.4286	0.0006	partly (5-50%)	yes	yes	yes	yes
+rs11978267	IKZF1	association	Leukemia, acute lymphocytic, susceptibility to, 2	6	5	5	0.6667	0.0058	mostly (>=50%)	yes	yes	yes	no
+rs3792267	CAPN10	risk factor	Type 2 diabetes mellitus 1, susceptibility to	6	6	5	0.0	0.0361	rarely (<5%)	no	no	no	no
+rs4795895	CCL11	protective	Susceptibility to HIV infection	6	3	4	0.0	0.0135	rarely (<5%)	no	yes	yes	no
+rs1426654	SLC24A5	association	Skin/hair/eye pigmentation, variation in, 4	6	6	4	0.5	0.0016	mostly (>=50%)	yes	yes	no	no
+rs11203366	PADI4	Benign; association	PADI4-related disorder; Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	6	5	4	0.0	0.024	rarely (<5%)	no	yes	yes	no
+rs116843064	ANGPTL4	association	Plasma triglyceride level quantitative trait locus	6	4	6	0.8333	0.0125	mostly (>=50%)	yes	yes	no	no
+rs1043618	HSPA1A	association	Chronic obstructive pulmonary disease	6	6	6	0.0	0.0195	rarely (<5%)	yes	yes	yes	no
+rs72552713	ABCG2	association	BLOOD GROUP, JUNIOR SYSTEM; Hepatocellular carcinoma; URIC ACID CONCENTRATION, SERUM, QUANTITATIVE TRAIT LOCUS 1	6	4	3	0.0	0.0033	rarely (<5%)	no	no	no	no
+rs547154	C2	protective	Age related macular degeneration 14	6	6	2	1.0	0.0018	mostly (>=50%)	yes	yes	yes	yes
+rs2519093	ABO	association	ABO blood group system	6	6	5	0.3333	0.0098	partly (5-50%)	yes	yes	no	no
+rs735239	CD209	risk factor	Mycobacterium tuberculosis, susceptibility to	5	5	5	0.0	0.0053	rarely (<5%)	no	no	no	no
+rs2230288	GBA1	Conflicting classifications of pathogenicity; risk factor	6 conditions; Gaucher disease; Gaucher disease perinatal lethal; Parkinson disease, late-onset; Parkinsonian disorder; Tremor;Rigidity;Parkinsonian disorder;Cogwheel rigidity; not provided; not specified	5	4	2	1.0	0.0024	mostly (>=50%)	yes	yes	yes	yes
+rs2274567	CR1	Benign; protective	CR1-related disorder; Malaria, severe, resistance to	5	4	4	0.0	0.0079	rarely (<5%)	no	yes	no	no
+rs2168101	LMO1	Benign; protective	LMO1 POLYMORPHISM; Neuroblastoma, susceptibility to, 7	5	5	2	0.6	0.0025	mostly (>=50%)	yes	yes	yes	no
+rs34778348	LRRK2	Conflicting classifications of pathogenicity; risk factor	Autosomal dominant Parkinson disease 8; Parkinson disease; not provided	5	4	1	1.0	0.0013	mostly (>=50%)	yes	yes	yes	yes
+rs398652	-	association	Chronic osteomyelitis	5	5	5	0.0	0.0065	rarely (<5%)	no	no	no	no
+rs2710102	CNTNAP2	risk factor	Autism, susceptibility to, 15	5	4	3	0.0	0.0269	rarely (<5%)	no	no	yes	no
+rs874881	PADI4	Benign; association	PADI4-related disorder; Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	5	4	3	0.0	0.0262	rarely (<5%)	no	yes	yes	no
+rs3821204	IL33R	association	Ascending aortic dissection	5	4	4	0.0	0.0129	rarely (<5%)	no	yes	yes	no
+rs1333042	CDKN2B-AS1	protective	Three Vessel Coronary Disease	5	5	4	0.6	0.0373	mostly (>=50%)	yes	yes	no	no
+rs3745368	RETN	risk factor	Diabetes mellitus type 2, susceptibility to; HYPERTENSION, INSULIN RESISTANCE-RELATED, SUSCEPTIBILITY TO	4	4	3	0.5	0.0227	fewer than 5 reported associations	yes			
+rs2763979	HSPA1B	association	Chronic obstructive pulmonary disease	4	3	2	0.0	0.0016	fewer than 5 reported associations	yes			
+rs3741240	SCGB1A1	Established risk allele; association	Chronic obstructive pulmonary disease	4	4	3	0.25	0.02	fewer than 5 reported associations	yes			
+rs2066702	ADH1B	protective	Alcohol dependence	4	3	3	0.75	0.0006	fewer than 5 reported associations	yes			
+rs2071676	CA9	association	Gastric cancer; Triple-negative breast cancer	4	4	4	0.0	0.0244	fewer than 5 reported associations	yes			
+rs2071592	NFKBIL1	risk factor	Rheumatoid arthritis	4	4	4	0.0	0.0115	fewer than 5 reported associations	no			
+rs1903003	FAM13A	association	Chronic obstructive pulmonary disease	4	3	3	0.5	0.0528	fewer than 5 reported associations	yes			
+rs6413432	CYP2E1	association	CYP2E1*6 ALLELE	4	4	3	0.0	0.0114	fewer than 5 reported associations	no			
+rs35264875	TPCN2	association	SKIN/HAIR/EYE PIGMENTATION, VARIATION IN, 10	4	1	4	0.0	0.011	fewer than 5 reported associations	yes			
+rs5744168	TLR5	protective; risk factor	Legionnaire disease, susceptibility to; Melioidosis, resistance to; Systemic lupus erythematosus, resistance to, 1	4	3	3	0.0	0.0408	fewer than 5 reported associations	yes			
+rs1005753	PADI2	association	Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	4	4	3	0.0	0.0212	fewer than 5 reported associations	no			
+rs1008438	HSPA1A	association	Chronic obstructive pulmonary disease	4	4	4	0.0	0.0281	fewer than 5 reported associations	yes			
+rs13147758	HHIP	association	Chronic obstructive pulmonary disease; Chronic obstructive pulmonary disease, biomass related	4	4	3	1.0	0.0213	fewer than 5 reported associations	yes			
+rs7442295	SLC2A9	association	URIC ACID CONCENTRATION, SERUM, QUANTITATIVE TRAIT LOCUS 2	4	4	3	0.75	0.0321	fewer than 5 reported associations	yes			
+rs1693482	ADH1C	protective	Alcohol dependence	4	4	4	0.0	0.0416	fewer than 5 reported associations	no			
+rs5030952	CAPN10	risk factor	Type 2 diabetes mellitus 1, susceptibility to	3	3	3	0.0	0.0105	fewer than 5 reported associations	no			
+rs60910145	APOL1	Conflicting classifications of pathogenicity; risk factor	APOL1-associated kidney disease; Focal segmental glomerulosclerosis; Focal segmental glomerulosclerosis 4, susceptibility to; Focal segmental glomerulosclerosis;Steroid-resistant nephrotic syndrome; Glomerulonephritis; Hyalinosis, Segmental Glomerular; Nephrotic range proteinuria; Proteinuria; Sickl	3	2	3	0.0	0.0048	fewer than 5 reported associations	yes			
+rs3766379	CD244	risk factor	Rheumatoid arthritis	3	2	3	0.0	0.0208	fewer than 5 reported associations	no			
+rs213045	ECE1	risk factor	Hypertension, essential, susceptibility to	3	3	3	0.0	0.053	fewer than 5 reported associations	no			
+rs35068180	MMP3	risk factor	Coronary heart disease, susceptibility to, 6	3	3	3	0.0	0.0013	fewer than 5 reported associations	yes			
+rs111521887	TOLLIP	Uncertain significance; association	Chronic obstructive pulmonary disease; Combined pulmonary fibrosis-emphysema syndrome; Interstitial lung disease 2; Susceptibility to severe coronavirus disease (COVID-19)	3	3	3	0.0	0.013	fewer than 5 reported associations	no			
+rs1800482	NOS2	protective	Malaria, severe, resistance to	3	3	3	0.0	0.0003	fewer than 5 reported associations	no			
+rs11203367	PADI4	Benign; association	PADI4-related disorder; Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	3	3	3	0.0	0.0255	fewer than 5 reported associations	no			
+rs11739136	KCNMB1	Benign; protective	HYPERTENSION, DIASTOLIC, RESISTANCE TO; KCNMB1-related disorder	3	2	3	0.0	0.022	fewer than 5 reported associations	no			
+rs180195	TG	risk factor	Autoimmune thyroid disease, susceptibility to, 3	3	2	2	0.0	0.017	fewer than 5 reported associations	no			
+rs6449213	SLC2A9	association	URIC ACID CONCENTRATION, SERUM, QUANTITATIVE TRAIT LOCUS 2	3	3	3	0.6667	0.0085	fewer than 5 reported associations	yes			
+rs12654264	HMGCR	association	Low density lipoprotein cholesterol level quantitative trait locus 3	3	3	3	0.6667	0.0297	fewer than 5 reported associations	yes			
+rs7675998	-	association	Chronic osteomyelitis	3	3	3	0.0	0.037	fewer than 5 reported associations	yes			
+rs34637584	LRRK2	Pathogenic/Likely pathogenic; risk factor	Autosomal dominant Parkinson disease 8; Inborn genetic diseases; LRRK2-related disorder; Parkinson disease; Parkinson disease, late-onset; Young-onset Parkinson disease; not provided	3	3	2	0.6667	0.001	fewer than 5 reported associations	yes			
+rs7291467	LGALS2	risk factor	Myocardial infarction, susceptibility to	3	3	3	0.0	0.0256	fewer than 5 reported associations	no			
+rs2073711	CILP	Benign; risk factor	CILP-related disorder; Lumbar disc disease, susceptibility to	3	3	2	0.0	0.007	fewer than 5 reported associations	no			
+rs34367357	CARD14	Benign/Likely benign; association	Pityriasis rubra pilaris; Pityriasis rubra pilaris;Psoriasis 2; not provided; not specified	3	3	1	0.0	0.0107	fewer than 5 reported associations	no			
+rs2057094	PADI2	association	Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	3	3	1	0.0	0.0277	fewer than 5 reported associations	no			
+rs7775	FRZB	Benign; risk factor	FRZB-related disorder; Osteoarthritis susceptibility 1	3	3	3	0.0	0.0174	fewer than 5 reported associations	yes			
+rs708494	PTGER2	risk factor	Asthma, aspirin-induced, susceptibility to	3	2	3	0.0	0.0182	fewer than 5 reported associations	no			
+rs2282983	CDK6	association	Behcet disease	2	1	2	0.0	0.0315	fewer than 5 reported associations	no			
+rs2235926	PADI2	association	Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	2	2	2	0.5	0.0128	fewer than 5 reported associations	no			
+rs120074175	TPH2	risk factor	Unipolar depression, susceptibility to	2	2	2	0.0	0.0027	fewer than 5 reported associations	no			
+rs1884302	BMP2	risk factor	Craniosynostosis 7	2	1	1	0.0	0.001	fewer than 5 reported associations	yes			
+rs1024610	CCL2	protective	Susceptibility to HIV infection	2	1	2	0.0	0.0515	fewer than 5 reported associations	no			
+rs3792876	SLC22A4	risk factor	Rheumatoid arthritis	2	2	2	0.0	0.0128	fewer than 5 reported associations	no			
+rs12896399	SLC24A4	association	SKIN/HAIR/EYE PIGMENTATION 6, BLOND/BROWN HAIR	2	2	1	0.0	0.0027	fewer than 5 reported associations	yes			
+rs76763715	GBA1	Pathogenic/Likely pathogenic; risk factor	7 conditions; Abnormal bleeding;Thrombocytopenia; Dementia, Lewy body, susceptibility to; GBA-related disorder; GBA1-related disorder; GBA1-related disorders; Gaucher disease; Gaucher disease perinatal lethal; Gaucher disease type I; Gaucher disease-ophthalmoplegia-cardiovascular calcification syndr	2	2	2	0.5	0.0006	fewer than 5 reported associations	yes			
+rs71785313	APOL1	Conflicting classifications of pathogenicity; risk factor	Focal segmental glomerulosclerosis; Focal segmental glomerulosclerosis 4, susceptibility to; Hyalinosis, Segmental Glomerular; Kidney failure; Nephrotic range proteinuria; not provided; not specified	2	2	2	0.0	0.002	fewer than 5 reported associations	no			
+rs5174	LRP8	risk factor	Myocardial infarction, susceptibility to, 1	2	2	2	0.0	0.0516	fewer than 5 reported associations	yes			
+rs2073658	USF1	risk factor	Hyperlipidemia, familial combined, susceptibility to	2	2	2	0.0	0.0528	fewer than 5 reported associations	no			
+rs188140481	-	association	Familial prostate cancer	2	2	1	1.0	0.0045	fewer than 5 reported associations	yes			
+rs6457452	HSPA1B	association	Chronic obstructive pulmonary disease	2	2	2	0.0	0.0078	fewer than 5 reported associations	no			
+rs2072493	TLR5	Benign; risk factor	Legionnaire disease, susceptibility to; TLR5-related disorder	2	2	2	0.0	0.0	fewer than 5 reported associations	no			
+rs414171	CISH	risk factor	Bacteremia, susceptibility to, 2; Malaria, susceptibility to; Tuberculosis, susceptibility to	2	2	2	0.0	0.0031	fewer than 5 reported associations	no			
+rs2736191	NCR3	Pathogenic; risk factor	Malaria, mild, susceptibility to; Malaria, severe, susceptibility to	2	2	2	0.0	0.0006	fewer than 5 reported associations	no			
+rs9332220	CYP2C9	association	Pulmonary disease, chronic obstructive, susceptibility to	2	2	2	0.0	0.0121	fewer than 5 reported associations	no			
+rs283413	ADH1C	risk factor	Parkinson disease, mitochondrial	2	2	2	0.0	0.001	fewer than 5 reported associations	yes			
+rs213046	ECE1	risk factor	Hypertension, essential, susceptibility to	2	2	2	0.0	0.0377	fewer than 5 reported associations	no			
+rs182549	MCM6	association	LACTASE PERSISTENCE	2	1	2	0.5	0.018	fewer than 5 reported associations	yes			
+rs13333226	UMOD	association	Essential hypertension	2	2	2	1.0	0.0506	fewer than 5 reported associations	yes			
+rs279845	GABRA2	risk factor	Alcoholism, susceptibility to	2	2	2	0.5	0.0318	fewer than 5 reported associations	no			
+rs279871	GABRA2	risk factor	Alcoholism, susceptibility to	2	2	2	0.5	0.0371	fewer than 5 reported associations	no			
+rs421016	GBA1	Pathogenic/Likely pathogenic; risk factor	7 conditions; Congenital portosystemic shunt; Dementia, Lewy body, susceptibility to; GBA & GBA1-related disorders; GBA1-related disorder; GBA1-related disorders; Gaucher disease; Gaucher disease perinatal lethal; Gaucher disease type I; Gaucher disease type II; Gaucher disease type III; Gaucher dis	2	2	2	0.5	0.0004	fewer than 5 reported associations	yes			
+rs2276631	SLC11A1	risk factor	Mycobacterium tuberculosis, susceptibility to infection by	2	1	2	0.0	0.0005	fewer than 5 reported associations	no			
+rs6058017	ASIP	association	SKIN/HAIR/EYE PIGMENTATION 9, DARK/LIGHT HAIR	1	1	1	0.0	0.0312	fewer than 5 reported associations	no			
+rs3219018	FCGR2B	risk factor	Systemic lupus erythematosus, susceptibility to	1	1	1	0.0	0.0036	fewer than 5 reported associations	no			
+rs3788853	XPNPEP2	risk factor	Susceptibility to angioedema induced by ACE inhibitors	1	1	1	0.0	0.0133	fewer than 5 reported associations	yes			
+rs3829241	TPCN2	association	SKIN/HAIR/EYE PIGMENTATION, VARIATION IN, 10	1	1	1	0.0	0.0154	fewer than 5 reported associations	yes			
+rs1667394	HERC2	association	SKIN/HAIR/EYE PIGMENTATION 1, BLUE/NONBLUE EYES	1	1	1	0.0	0.001	fewer than 5 reported associations	yes			
+rs11558538	HNMT	Benign; risk factor	HNMT-related disorder; Inherited susceptibility to asthma	1	1	1	0.0	0.0113	fewer than 5 reported associations	yes			
+rs4494157	FCN3	risk factor	Rheumatic heart disease	1	1	1	0.0	0.0144	fewer than 5 reported associations	no			
+rs4646450	CYP3A5	association	appendicular lean mass relative to body height	1	1	1	0.0	0.0003	fewer than 5 reported associations	yes			
+rs1131341	NQO1	association	Acute myeloid leukemia; Adrenocortical carcinoma, hereditary; Cervical cancer; Cholangiocarcinoma; Colon adenocarcinoma; Colorectal cancer; Gastric cancer; Malignant lymphoma, large B-cell, diffuse; Malignant tumor of esophagus; Sarcoma; Thymoma; Uterine carcinosarcoma; Uveal melanoma	1	1	1	0.0	0.002	fewer than 5 reported associations	yes			
+rs9632884	CDKN2B-AS1	protective	Three Vessel Coronary Disease	1	1	1	1.0	0.1082	fewer than 5 reported associations	yes			
+rs7116432	CD44	association	Nephrolithiasis, calcium oxalate	1	1	1	0.0	0.0003	fewer than 5 reported associations	no			
+rs737267	SLC2A9	association	URIC ACID CONCENTRATION, SERUM, QUANTITATIVE TRAIT LOCUS 2	1	1	1	0.0	0.0109	fewer than 5 reported associations	yes			
+rs532436	ABO	association	ABO blood group system	1	1	1	1.0	0.0126	fewer than 5 reported associations	yes			
+rs9282799	NOS2	protective	Malaria, resistance to	1	1	1	0.0	0.0006	fewer than 5 reported associations	no			
+rs9406328	THBS2	Benign; risk factor	Lumbar disk herniation, susceptibility to; THBS2-related disorder	1	1	1	0.0	0.0007	fewer than 5 reported associations	no			
+rs2989924	AQP7	risk factor	OBESITY (BMIQ17), SUSCEPTIBILITY TO	1	1	1	0.0	0.0699	fewer than 5 reported associations	no			
+rs10509681	CYP2C8	Benign; association	CYP2C8-related disorder; Pulmonary disease, chronic obstructive, susceptibility to	1	1	1	0.0	0.0779	fewer than 5 reported associations	no			
+rs507666	ABO	association	ABO blood group system	1	1	1	0.0	0.0099	fewer than 5 reported associations	yes			
+rs353630	CD44	association	Nephrolithiasis, calcium oxalate	1	1	1	0.0	0.0178	fewer than 5 reported associations	no			
+rs11327935	COL1A1	association	Bone mineral density variation quantitative trait locus	1	1	1	0.0	0.0004	fewer than 5 reported associations	no			
+rs3127334	TBXT	risk factor	Neural tube defects, susceptibility to	1	1	1	0.0	0.0	fewer than 5 reported associations	no			
+rs2269577	XBP1	risk factor	-	1	1	1	0.0	0.0034	fewer than 5 reported associations	no			
+rs2899472	CYP19A1	association	Pulmonary disease, chronic obstructive, susceptibility to	1	1	1	0.0	0.0417	fewer than 5 reported associations	yes			
+rs16881446	HS3ST1	risk factor	Arteriosclerosis disorder;Coronary artery disorder	1	1	1	0.0	0.0386	fewer than 5 reported associations	no			
+rs77571059	IRF5	risk factor	Inflammatory bowel disease 14, susceptibility to; Systemic lupus erythematosus, susceptibility to, 10	1	1	1	0.0	0.0036	fewer than 5 reported associations	yes			
+rs77179853	HOXB13	Conflicting classifications of pathogenicity; association	Familial prostate cancer; HOXB13-related disorder; Hereditary cancer-predisposing syndrome; Prostate cancer, hereditary, 9; not provided	1	1	1	0.0	0.0058	fewer than 5 reported associations	no			
+rs183130	CETP	association	High density lipoprotein cholesterol level quantitative trait locus 10	1	1	1	1.0	0.0386	fewer than 5 reported associations	yes			
+rs13019803	IL1R1	association	Ascending aortic dissection	1	1	1	0.0	0.0161	fewer than 5 reported associations	yes			
+rs12999364	IL18R1	Benign; association	Behcet disease; not provided	1	1	1	0.0	0.0254	fewer than 5 reported associations	yes			
+rs796065354	ESR1	risk factor	Familial cancer of breast	1	1	1	0.0	0.0004	fewer than 5 reported associations	no			
+rs41303970	GCLM	risk factor	Myocardial infarction, susceptibility to	1	1	1	0.0	0.0083	fewer than 5 reported associations	no			
+rs12931021	ZFHX3	risk factor	Atrial fibrillation, familial, 8	1	1	1	1.0	0.0268	fewer than 5 reported associations	no			
+rs2070634	AHSG	association	Nephrolithiasis, calcium oxalate	1	1	1	0.0	0.018	fewer than 5 reported associations	yes			
+rs2857657	CCL2	protective	Susceptibility to HIV infection	1	1	1	0.0	0.0164	fewer than 5 reported associations	no			
+rs12740374	SORT1	association	LOW DENSITY LIPOPROTEIN CHOLESTEROL LEVEL QUANTITATIVE TRAIT LOCUS 6	1	1	1	1.0	0.0154	fewer than 5 reported associations	yes			
+rs1670533	RNF212	association	RECOMBINATION RATE QUANTITATIVE TRAIT LOCUS 1	1	1	1	0.0	0.0	fewer than 5 reported associations	yes			
+rs2076615	PADI2	association	Rheumatoid arthritis;Abnormal pulmonary interstitial morphology	1	1	1	1.0	0.0215	fewer than 5 reported associations	no			
+rs1934953	CYP2C8	association	Pulmonary disease, chronic obstructive, susceptibility to	1	1	1	0.0	0.0288	fewer than 5 reported associations	no			
+rs1921622	IL33R	association	Ascending aortic dissection	1	1	1	0.0	0.0126	fewer than 5 reported associations	yes			
+rs2282440	SDC3	association	Obesity, association with	1	1	1	0.0	0.0063	fewer than 5 reported associations	no			
+rs2305795	P2RY11	association	Cataplexy and narcolepsy	1	1	1	1.0	0.0007	fewer than 5 reported associations	no			
+rs1800386	VWF	Conflicting classifications of pathogenicity; risk factor	Hereditary von Willebrand disease; Inborn genetic diseases; Thrombocytopenia; Thrombus; VWF-related disorder; not provided; von Willebrand disease type 1; von Willebrand disease type 2; von Willebrand disease type 2;von Willebrand disease type 1; von Willebrand disease type 2;von Willebrand disease 	1	1	1	0.0	0.0	fewer than 5 reported associations	no			
+rs1581842283	FKBP5	risk factor	Asthma	1	1	1	0.0	0.0027	fewer than 5 reported associations	no			
