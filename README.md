@@ -1,6 +1,6 @@
 # Variant–Trait Claim Atlas
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24314561.svg)](https://doi.org/10.5281/zenodo.24314561)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24314560.svg)](https://doi.org/10.5281/zenodo.24314560)
 
 Published claims that a named genetic variant is associated with a disease or trait, read from 75,578 PubMed abstracts and each set
 against genome-wide significant associations in the NHGRI-EBI GWAS Catalog, with frequency-matched random variants as the chance
@@ -33,7 +33,7 @@ ClinVar (release of 16 November 2026).
 ## Citation
 
 Hu Y, Xu Z, Jiang S, Huang L, Pan M, Luo S, Zhou H, Guo X. Calibrating 212,710 published variant–trait claims against genome-wide
-evidence exposes a split extending into ClinVar. Manuscript submitted, 2026. Archived release: https://doi.org/10.5281/zenodo.24314561
+evidence exposes a split extending into ClinVar. Manuscript submitted, 2026. Archived release: https://doi.org/10.5281/zenodo.24314560
 
 ## Licences
 
