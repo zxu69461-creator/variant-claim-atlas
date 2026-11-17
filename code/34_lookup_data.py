@@ -28,6 +28,7 @@ d['rep_prior'] = d.rep_prior.fillna(False).astype(bool) & d.testable
 d['trait'] = [F.trait_label(e, o[:80] if isinstance(o, str) else '') for e, o in zip(d.efo, d.outcome)]
 d['area'] = F.area_group(F.area_of(d.efo))
 d['n'] = pd.to_numeric(d.n, errors='coerce')
+d['design'] = d.design.fillna('not stated').astype(str); d['pop_group'] = d.pop_group.fillna('not_stated').astype(str)
 genes = F.genes()
 d['gene'] = d.rsid.map(genes).fillna('')
 cnt = d[d.status == 'positive'].groupby('rsid').size()
@@ -59,7 +60,7 @@ for rs, x in d.groupby('rsid'):
                  [[k, int(v.k), int(v.tt), int(v.s)] for k, v in top.iterrows()],
                  CV.get(int(rs), ''), None if x.first_hit_year.isna().all() else int(x.first_hit_year.min())])
 cols = ['rsid', 'gene', 'papers', 'reported', 'absent', 'testable', 'supported', 'null', 'median_n', 'size_classes', 'top_traits', 'clinvar', 'first_gw_year']
-(OUT / 'variants.json').write_text(json.dumps({'cols': cols, 'rows': rows}, separators=(',', ':')))
+(OUT / 'variants.json').write_text(json.dumps({'cols': cols, 'rows': rows}, separators=(',', ':'), allow_nan=False))
 
 # ---- per trait
 tr = []
@@ -72,7 +73,7 @@ for k, x in d.groupby('trait'):
                r1(t.replicated.mean()) if len(t) else None, r1(t.null_share.mean()) if len(t) else None,
                [[int(rs), v.g, int(v.k), int(v.tt), int(v.s)] for rs, v in top.iterrows()]])
 tcols = ['trait', 'area', 'papers', 'reported', 'absent', 'testable', 'supported', 'null', 'top_variants']
-(OUT / 'traits.json').write_text(json.dumps({'cols': tcols, 'rows': sorted(tr, key=lambda r: -r[3])}, separators=(',', ':')))
+(OUT / 'traits.json').write_text(json.dumps({'cols': tcols, 'rows': sorted(tr, key=lambda r: -r[3])}, separators=(',', ':'), allow_nan=False))
 
 # ---- claims, sharded
 ccols = ['pmid', 'rsid', 'trait', 'status', 'year', 'n', 'design', 'population', 'testable', 'supported', 'earlier', 'first_gw_year']
@@ -82,7 +83,7 @@ for s, x in d.groupby('shard'):
     out = [[int(r.pmid), int(r.rsid), r.trait, 'reported' if r.status == 'positive' else 'absent', int(r.pub_year),
             None if np.isnan(r.n) else int(r.n), r.design, pop.get(r.pop_group, r.pop_group), bool(r.testable), bool(r.replicated),
             bool(r.rep_prior), None if pd.isna(r.first_hit_year) else int(r.first_hit_year)] for r in x.sort_values(['rsid', 'pub_year']).itertuples()]
-    (OUT / 'claims' / f'{s:02d}.json').write_text(json.dumps({'cols': ccols, 'rows': out}, separators=(',', ':')))
+    (OUT / 'claims' / f'{s:02d}.json').write_text(json.dumps({'cols': ccols, 'rows': out}, separators=(',', ':'), allow_nan=False))
 
 meta = dict(claims=len(d), papers=int(d.pmid.nunique()), variants=len(rows), traits=len(tr), shards=NSHARD, size_classes=['<500', '500–1,999', '2,000–9,999', '≥10,000'],
             gwas_catalog='29 October 2026', clinvar='16 November 2026', pubmed='2026 baseline', efo='v3.95.0', built='2026-11-17')
