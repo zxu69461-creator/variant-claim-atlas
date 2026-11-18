@@ -83,7 +83,7 @@ def bkde(v, xs, bw):
 
 
 # ------------------------------------------------------------------ A  framed overview
-letter(0, 0.5, 'a')
+letter(0, 0.5, RL.PL('a'))
 fr = axes(fig, 3, 4, 128, 55); fr.set_xlim(0, 1); fr.set_ylim(0, 1); fr.set_xticks([]); fr.set_yticks([])
 for s_ in fr.spines.values(): s_.set_visible(True); s_.set_linewidth(0.6); s_.set_color(INK)
 fr.text(0.015, 0.95, 'variant class', fontsize=FS, fontweight='bold', va='top')
@@ -113,7 +113,7 @@ for j, gname in enumerate(GROUPS):
     fr.text(x0 + 0.09, 0.825, f'n = {len(q):,}', ha='center', fontsize=FT, color=GD)
 
 # ------------------------------------------------------------------ B  small multiples by trait area
-letter(134, 0.5, 'b')
+letter(134, 0.5, RL.PL('b'))
 AR = [a for a in F.AREA_ORDER if a not in ('Not mapped',)]
 for i, a in enumerate(AR):
     sb = axes(fig, 137, 4.5 + i * 6.6, 25, 5.9)
@@ -128,10 +128,10 @@ for i, a in enumerate(AR):
 bl = axes(fig, 137, 58.6, 40, 3); bl.axis('off'); bl.set_xlim(0, 1); bl.set_ylim(0, 1)
 bl.add_patch(mp.Rectangle((0.0, 0.25), 0.06, 0.5, color=GD, lw=0)); bl.text(0.08, 0.5, 'ClinVar risk', fontsize=FT - 0.5, va='center')
 bl.add_patch(mp.Rectangle((0.48, 0.25), 0.06, 0.5, color=GD, alpha=0.45, lw=0)); bl.text(0.56, 0.5, 'not in ClinVar', fontsize=FT - 0.5, va='center')
-ftext(fig, 137, 2.2, '% of variants in each class', fontsize=FT - 0.5, color=GD)
+ftext(fig, 137 + (4 if RL.PL('b') != 'b' else 0), 2.2, '% of variants in each class', fontsize=FT - 0.5, color=GD)
 
 # ------------------------------------------------------------------ C  schematic + box plot with brackets
-letter(0, 63, 'c')
+letter(0, 63, RL.PL('c'))
 sc = axes(fig, 2, 67, 40, 37); sc.set_xlim(0, 1); sc.set_ylim(0, 1); sc.axis('off')
 sc.plot([0.05, 0.95], [0.86, 0.86], color=GD, lw=1.4, solid_capstyle='round')
 for xx in np.linspace(0.08, 0.92, 22): sc.plot([xx, xx], [0.83, 0.89], color=GL, lw=0.5)
@@ -159,7 +159,7 @@ bx.set_ylabel('% supported (per variant)', fontsize=FT, labelpad=1); bx.set_xlab
 bx.spines['left'].set_bounds(0, 100)
 
 # ------------------------------------------------------------------ D  two tiled tables, one per dataset
-letter(73, 63, 'd')
+letter(73, 63, RL.PL('d'))
 for b_i, (V, name, col) in enumerate(((VH, 'held-out', HO), (VD, 'development', DEV))):
     X0 = 84 + b_i * 44
     T = pd.DataFrame(index=GROUPS[:3], columns=CLS, dtype=float)
@@ -186,7 +186,7 @@ for b_i, (V, name, col) in enumerate(((VH, 'held-out', HO), (VD, 'development', 
 ftext(fig, 84, 103.5, 'claims on variants of each class, by ClinVar assertion; header: all risk variants', fontsize=FT - 0.5, color=GD)
 
 # ------------------------------------------------------------------ E  stacked densities of the variant-level share
-letter(0, 108, 'e')
+letter(0, 108, RL.PL('e'))
 xs = np.linspace(0, 1, 300)
 for r_, (V, name, col) in enumerate(((VH, 'held-out', HO), (VD, 'development', DEV))):
     ea = axes(fig, 16, 113 + r_ * 25, 60, 19)
@@ -208,7 +208,7 @@ for k, (lab, c_) in enumerate((('ClinVar risk\nvariants', CVR), ('not in\nClinVa
 ftext(fig, 78, 126, 'dashed: medians', fontsize=FT - 1, color=GD)
 
 # ------------------------------------------------------------------ F  2 x 2 densities of publication year
-letter(98, 108, 'f')
+letter(98, 108, RL.PL('f'))
 ys = np.linspace(2000, 2025, 300)
 for r_, (pos, V, name, col) in enumerate(((posH, VH, 'held-out', HO), (posD, VD, 'development', DEV))):
     for c_i, gname in enumerate(('Risk factor', 'Association')):

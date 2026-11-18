@@ -43,7 +43,7 @@ fig = fk.figure('double', height=100, kind='supp', profile=fk.target())
 gs = fig.add_gridspec(1, 5)
 yy = np.arange(len(names))[::-1]
 for k, (t, (let, title, xl, ref, mult, ticks)) in enumerate(tests.items()):
-    ax = fig.add_subplot(gs[0, k]); fk.panel(ax, let, title)
+    ax = fig.add_subplot(gs[0, k]); fk.panel(ax, RL.PL(let), title)
     x = D[D.test == t].set_index('set').reindex(list(names))
     est, lo, hi = x.estimate.values * mult, x.ci_low.values * mult, x.ci_high.values * mult
     F.check(bool(((lo > ref) if est[0] > ref else (hi < ref)).all()), f'{let}: every sensitivity estimate on the side of the primary estimate')

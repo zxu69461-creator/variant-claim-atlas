@@ -89,6 +89,9 @@ for rule in ('exact', 'one_step'):
         V[f'tr_{rule}_{k.lower()}'] = f'{t.loc[k].estimate:.2f}'
         V[f'tr_{rule}_{k.lower()}ci'] = f'{t.loc[k].ci_low:.2f}–{t.loc[k].ci_high:.2f}'
 r_ = CC[CC.cls == 'rarely']; m_ = CC[CC.cls == 'mostly']
+t_ = CC[CC.cond_term]
+V.update(cc_all=num(len(CC)), cc_all_term=num(len(t_)), cc_all_condsup=num(t_.cond_support.sum()), cc_all_condsup_pct=pct(t_.cond_support.mean()),
+         cc_rare_noterm=num(len(r_) - r_.cond_term.sum()))
 V.update(cc_rare=num(len(r_)), cc_rare_nogw=num((~r_.gwas_any).sum()), cc_rare_term=num(r_.cond_term.sum()), cc_rare_condsup=num(r_.cond_support.sum()),
          cc_most=num(len(m_)), cc_most_term=num(m_.cond_term.sum()), cc_most_condsup=num(m_.cond_support.sum()),
          cc_most_condsup_pct=pct(m_.cond_support.sum() / m_.cond_term.sum()))
@@ -101,6 +104,19 @@ V.update(al_claims=num(a.claims), al_share=pct(a.share, 1), al_ci=f'{a.ci_low * 
 _p = F.claims('heldout'); _p = _p[(_p.status == 'positive') & (_p.n > 0)]
 from importlib.metadata import version as _ver
 V.update(f2_median=f'{int(_p.n.median()):,}', ver_pycirclize=_ver('pycirclize'))
+
+V['rc_pos_short'] = V['rc_pos'].split(' ')[0]                     # reading-check precision alone, for the abstract
+
+# ---- language-model outputs that reached the token limit or could not be parsed (work/reader/reader_all_v2.jsonl)
+_n = _t = _pf = _ca = _ct = 0
+for _l in open(F.ROOT / 'work' / 'reader' / 'reader_all_v2.jsonl'):
+    _r = json.loads(_l); _n += 1
+    if _r['claims'] is None:
+        _pf += 1; continue
+    _ca += len(_r['claims'])
+    if _r.get('truncated'):
+        _t += 1; _ct += len(_r['claims'])
+V.update(trunc_n=num(_t), trunc_pct=pct(_t / _n, 1), trunc_entries_pct=pct(_ct / _ca, 1), parse_fail=num(_pf), parse_fail_pct=pct(_pf / _n, 2))
 
 V['TABLE2'] = V['TABLE2'].replace('support and matched null as in Figure 2', 'support and matched null as in Figure 1')
 VJ.write_text(json.dumps(V, ensure_ascii=False, indent=1))

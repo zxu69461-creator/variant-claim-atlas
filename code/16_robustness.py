@@ -110,7 +110,7 @@ with P.run(__file__, params={'split': 'heldout', 'rules': 'exact, one_step (efo_
         print(f[['test', 'estimate', 'ci_low', 'ci_high', 'p', 'n']].to_string(index=False, float_format=lambda v: f'{v:.4g}'))
 
     # ---- B
-    cv = pd.read_csv(CV, sep='\t', usecols=['ClinicalSignificance', 'RS# (dbSNP)', 'Assembly', 'PhenotypeIDS'], dtype=str)
+    cv = pd.read_csv(CV, sep='\t', usecols=['ClinicalSignificance', 'RS# (dbSNP)', 'Assembly', 'PhenotypeIDS', 'PhenotypeList'], dtype=str)
     cv = cv[cv.Assembly == 'GRCh38'].copy(); cv['rsid'] = pd.to_numeric(cv['RS# (dbSNP)'], errors='coerce'); cv = cv[cv.rsid > 0]
     sig = cv.ClinicalSignificance.fillna('').str.lower().str.replace('association not found', '', regex=False)
     cv = cv[sig.str.contains('risk factor') | sig.str.contains('association') | sig.str.contains('protective')]
@@ -119,11 +119,11 @@ with P.run(__file__, params={'split': 'heldout', 'rules': 'exact, one_step (efo_
     ids = ids.dropna(subset=['efo'])[['rsid', 'efo']].drop_duplicates(); ids['rsid'] = ids.rsid.astype('int64')
     pos = d[d.status == 'positive']
     V = pos.groupby('rsid').agg(n=('pmid', 'size'), sup=('replicated', 'mean')).reset_index()
-    V = V[V.rsid.isin(set(cv.rsid.astype('int64'))) & (V.n >= 5)].copy()
-    V['cls'] = np.where(V.sup >= 0.5, 'mostly', np.where(V.sup >= 0.05, 'partly', 'rarely'))
+    V = V[V.rsid.isin(set(cv.rsid.astype('int64')))].copy()                 # every claimed ClinVar risk variant (2026-11-17: all, not only >= 5)
+    V['cls'] = np.where(V.n < 5, 'under5', np.where(V.sup >= 0.5, 'mostly', np.where(V.sup >= 0.05, 'partly', 'rarely')))
     con.register('V', V[['rsid']]); con.register('ids', ids[ids.rsid.isin(set(V.rsid))])
     con.execute("""create or replace temp table vp as select rsid, rsid prsid from V
-                   union select V.rsid, l.proxy_rsid from V join ld_proxies l on l.query_rsid = V.rsid and l.pop = 'eur'""")
+                   union select V.rsid, l.proxy_rsid from V join ld_proxies l on l.query_rsid = V.rsid""")   # 1000 Genomes EUR and EAS proxies
     any_ = set(con.sql("""select distinct vp.rsid from vp join gwas_catalog_rsid_trait g on g.rsid = vp.prsid where g.pvalue_mlog >= 7.30103""").df().rsid)
     con.execute("create or replace temp table ib as select * from ids where efo in (select efo_id from branch)")
     with_term = set(con.sql('select distinct rsid from ib').df().rsid)
@@ -136,6 +136,16 @@ with P.run(__file__, params={'split': 'heldout', 'rules': 'exact, one_step (efo_
         join gg on gg.rsid = vp.prsid and gg.gefo = tmm.gefo where tmm.gefo not in ('MONDO_0000001','EFO_0001444','EFO_0000651')""").df().rsid)
     con.close()
     run.table('additional_trait_rule', pd.concat(fam), note='held-out: primary estimates C1-C5 under exact and one-step EFO trait matching, null recomputed (additional analysis, 2026-11-17)')
+    pl = cv.assign(rsid=cv.rsid.astype('int64')).groupby('rsid').PhenotypeList.agg(lambda x: '|'.join(x.fillna('')))
+    ids_any = cv.assign(rsid=cv.rsid.astype('int64')).groupby('rsid').PhenotypeIDS.agg(lambda x: '|'.join(x.fillna('')))
+    def why(r):
+        if r in with_term: return ''
+        txt = pl.get(r, '').lower(); idt = ids_any.get(r, '')
+        conds = [c for c in txt.split('|') if c and c not in ('not provided', 'not specified', 'see cases')]
+        if not conds: return 'no named condition (not provided / not specified)'
+        if 'MONDO:' in idt or 'HP:' in idt: return 'condition term outside the disease, measurement and phenotype branches'
+        return 'condition without a Mondo or HPO identifier'
+    V['no_term_reason'] = [why(r) for r in V.rsid]
     V['gwas_any'] = V.rsid.isin(any_); V['cond_term'] = V.rsid.isin(with_term); V['cond_support'] = V.rsid.isin(cond)
     run.table('additional_clinvar_condition', V, note='held-out ClinVar risk variants (>=5 reported associations): any genome-wide association, ClinVar condition with an EFO/MONDO/HP term, genome-wide support for that condition (additional analysis, 2026-11-17)')
     print(V.groupby('cls').agg(variants=('rsid', 'size'), gwas_any=('gwas_any', 'sum'), cond_term=('cond_term', 'sum'),

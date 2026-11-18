@@ -28,7 +28,7 @@ fig = fk.figure('double', height=225, profile=fk.target())
 gs = fig.add_gridspec(3, 2, width_ratios=[1, 1], height_ratios=[1.42, 1.25, 0.85])
 
 # ------------------------------------------------------------------ a  hero: the ridge of supported claims crosses the genome-wide report
-ax = fig.add_subplot(gs[0, :]); fk.panel(ax, 'a', 'Supported claims moved from anticipating genome-wide reports to restating them')
+ax = fig.add_subplot(gs[0, :]); fk.panel(ax, RL.PL('a'), 'Supported claims moved from anticipating genome-wide reports to restating them')
 R = P[P.replicated & P.pub_year.between(2005, 2025)].copy()
 R['lag'] = (R.pub_year - R.first_hit_year).clip(-18, 18).astype(int)
 periods = [(2005, 2007), (2008, 2010), (2011, 2013), (2014, 2016), (2017, 2019), (2020, 2022), (2023, 2025)]
@@ -82,7 +82,7 @@ fk.key(ax, 0.985, 0.90, f'{shares[-1]:.0f}%', f'restating\nin {periods[0][0]}–
 fk.key(ax, 0.985, 0.72, f'{shares[0]:.0f}%', f'in {periods[-1][0]}–{str(periods[-1][1])[2:]}', ha='right', transform=ax.transAxes, color=fk.c['blue@s0.2'])
 
 # ------------------------------------------------------------------ b  barcodes: every paper on the 20 most-claimed supported pairs
-ax = fig.add_subplot(gs[1, :]); fk.panel(ax, 'b', '')
+ax = fig.add_subplot(gs[1, :]); fk.panel(ax, RL.PL('b'), '')
 pairs = (d[d.replicated].groupby(['rsid', 'trait_key']).agg(n=('pmid', 'nunique'), fh=('first_hit_year', 'min'),
          tn=('efo', lambda s: F.trait_label(s.iloc[0]))).sort_values('n', ascending=False).reset_index()
          .drop_duplicates('rsid').head(22).sort_values('fh', ascending=False).reset_index(drop=True))
@@ -110,7 +110,7 @@ ax.text(2004.0, len(pairs) - 0.05, f'one tick per paper: {na:,} after the report
 ax.set_xlabel('Publication year')
 
 # ------------------------------------------------------------------ c  five-year yield of new claims, single years
-ax = fig.add_subplot(gs[2, 0]); fk.panel(ax, 'c', '')
+ax = fig.add_subplot(gs[2, 0]); fk.panel(ax, RL.PL('c'), '')
 def yield5(x):
     x = x[~x.rep_prior].copy(); x['y5'] = x.replicated & (x.first_hit_year - x.pub_year <= 5); return x
 rows = []
@@ -141,7 +141,7 @@ fk.chart(ax, grid='y', unit='% supported within 5 years')
 fk.pin_inside(ax)
 
 # ------------------------------------------------------------------ d  reports of no association at established variants
-ax = fig.add_subplot(gs[2, 1]); fk.panel(ax, 'd', '')
+ax = fig.add_subplot(gs[2, 1]); fk.panel(ax, RL.PL('d'), '')
 Nn = N[N.pub_year.between(2005, 2025)]
 rows = [(y,) + F.boot_share(x, 'rep_prior') + (len(x),) for y, x in Nn.groupby('pub_year') if len(x) >= 50]
 Z = pd.DataFrame(rows, columns=['y', 'est', 'lo', 'hi', 'n'])

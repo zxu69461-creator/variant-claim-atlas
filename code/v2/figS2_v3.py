@@ -36,7 +36,7 @@ fig = fk.figure('double', height=155, profile=fk.target())
 gs = fig.add_gridspec(2, 2, height_ratios=[0.6, 1], width_ratios=[1.5, 1])
 
 # ------------------------------------------------------------------ a  of 100 reported associations, of 100 matched random variants
-ax = fig.add_subplot(gs[0, 0]); fk.panel(ax, 'a', '')
+ax = fig.add_subplot(gs[0, 0]); fk.panel(ax, RL.PL('a'), '')
 k = per100(P); nul = int(round(100 * P.null_share.mean()))
 F.check(sum(k) >= 5 * nul and k[1] > k[0], 'a: support far above the matched expectation; most of it preceded the claim')
 rows = [dict(label='Reported associations', parts=[(k[0], LATER), (k[1], EARLIER)], note=f'{len(P):,} claims', hero=True, color='ink'),
@@ -57,7 +57,7 @@ ax.text(k[0] / 2, y1 + h1 / 2, f'{k[0]}', ha='center', va='center', fontsize=FT,
 ax.text(k[0] + 2 + k[1] / 2, y1 + h1 / 2, f'{k[1]}', ha='center', va='center', fontsize=FT, fontweight='bold', color=fk.c.ink, zorder=4)
 
 # ------------------------------------------------------------------ b  minor-allele frequency
-ax = fig.add_subplot(gs[0, 1]); fk.panel(ax, 'b', '')
+ax = fig.add_subplot(gs[0, 1]); fk.panel(ax, RL.PL('b'), '')
 order = ['lt0.01', '1', '2', '3', '4', '5', '6']
 names = {'lt0.01': '<1', '1': '1–5', '2': '5–10', '3': '10–20', '4': '20–30', '5': '30–40', '6': '40–50'}
 P['bin'] = pd.cut(P.maf_eur, [-1, 0.01, 0.05, 0.10, 0.20, 0.30, 0.40, 0.51], right=False, labels=order).astype(str)
@@ -85,7 +85,7 @@ ax.set_xlabel('Minor-allele frequency of the claimed variant (%)', fontsize=FB, 
 fk.pin_inside(ax)
 
 # ------------------------------------------------------------------ c  every trait area, in its colour: count per 100, matched null, interval
-ax = fig.add_subplot(gs[1, 0]); fk.panel(ax, 'c', '')
+ax = fig.add_subplot(gs[1, 0]); fk.panel(ax, RL.PL('c'), '')
 R = []
 for g, x in P[P.grp != 'Not mapped'].groupby('grp'):
     est, lo, hi = F.boot_share(x, 'replicated')
@@ -98,7 +98,7 @@ fk.forms.meter(ax, [dict(label=r.grp, parts=[(round(100 * r.est), e.color('area'
 axm = ax
 
 # ------------------------------------------------------------------ d  trait area by allele frequency, rows as in c
-ax = fig.add_subplot(gs[1, 1]); fk.panel(ax, 'd', '')
+ax = fig.add_subplot(gs[1, 1]); fk.panel(ax, RL.PL('d'), '')
 T = P.pivot_table(index='grp', columns='bin', values='replicated', aggfunc='mean').reindex(index=R.grp, columns=order) * 100
 Nn = P.pivot_table(index='grp', columns='bin', values='replicated', aggfunc='size').reindex(index=R.grp, columns=order)
 Nu = P.pivot_table(index='grp', columns='bin', values='null_share', aggfunc='mean').reindex(index=R.grp, columns=order) * 100

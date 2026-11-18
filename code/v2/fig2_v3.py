@@ -59,7 +59,7 @@ def qbins(x, k):
 fig = figure(180, 150)
 
 # ------------------------------------------------------------------ a  three curves + inset pie (reference a)
-letter(0, 0.5, 'a')
+letter(0, 0.5, RL.PL('a'))
 ax = axes(fig, 9, 3, 50, 44)
 Q = qbins(P, 40)
 g = Q.groupby('b').agg(lg=('lg', 'median'), s=('replicated', 'mean'), r=('rest', 'mean'), f=('first', 'mean'), nl=('null_share', 'mean'), m=('pmid', 'size'))
@@ -88,7 +88,7 @@ for k, (lab, v) in enumerate(cls.items()):
     pa.add_patch(matplotlib.patches.Rectangle((1.1, 0.72 - k * 0.55), 0.18, 0.26, color=[PALE, LBLUE, TEAL, SLATE][k], lw=0, clip_on=False))
 
 # ------------------------------------------------------------------ b  100 sorted stacked bars + population dot strip (reference b)
-letter(64, 0.5, 'b')
+letter(64, 0.5, RL.PL('b'))
 ax = axes(fig, 74, 3, 104, 41)
 Q = qbins(P, 100)
 B = Q.groupby('b').agg(r=('rest', 'mean'), f=('first', 'mean'), med=('n', 'median'), pop=('pop', lambda s: s.mode().iat[0]))
@@ -116,7 +116,7 @@ for k, (lab, v) in enumerate(pc.items()):
     pb.text(0.62 * np.cos(ang), 0.62 * np.sin(ang), f'{v / pc.sum() * 100:.0f}%', ha='center', va='center', fontsize=FT - 0.5, color='white')
 
 # ------------------------------------------------------------------ c  genome circos (reference c)
-letter(0, 55, 'c')
+letter(0, 55, RL.PL('c'))
 V = F.variants()
 dd = pd.concat([F.claims('dev'), F.claims('heldout')]); pp = dd[dd.status == 'positive'].copy()
 S = pp.groupby('rsid').agg(n_t=('pmid', 'size'), sup=('replicated', 'sum'), big=('n', lambda s: (pd.to_numeric(s, errors='coerce') >= 2000).sum()),
@@ -161,7 +161,7 @@ for k, (lab, col) in enumerate([('Claims per 5 Mb', None), ('% supported', TEAL)
     ins.text(0.58, y, lab, ha='right', va='center', fontsize=FT)
 
 # ------------------------------------------------------------------ d  sample-size histogram + population pie (reference d)
-letter(98, 55, 'd')
+letter(98, 55, RL.PL('d'))
 ax = axes(fig, 109, 59, 69, 34)
 bins = np.linspace(1, 6, 46)
 for lab in PCOL:
@@ -183,7 +183,7 @@ for k, (lab, v) in enumerate(dc.items()):
     ax.text(4.76, h.max() * (0.965 - k * 0.12), f'{lab} {v / dc.sum() * 100:.0f}%', fontsize=FT - 0.5, va='center')
 
 # ------------------------------------------------------------------ e  curves per population (reference e)
-letter(98, 97, 'e')
+letter(98, 97, RL.PL('e'))
 ax = axes(fig, 109, 101, 69, 38)
 for lab, col in PCOL.items():
     x = qbins(P[P['pop'] == lab], 8)

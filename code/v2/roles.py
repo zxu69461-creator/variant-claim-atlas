@@ -22,5 +22,10 @@ SUP, NOT, PART, REST, FIRST, CLIN = (R[k] for k in ('cSup', 'cNot', 'cPart', 'cR
 NOT_D = dark(NOT, 0.45)                                   # the 'not supported' role as a line or outline
 G1, G2, G3, G4 = '#4A4440', '#7D746B', '#A69C91', '#CFC7BD'  # warm greys for context variables (populations, designs, chromosomes)
 NULL = '#8A8A8A'
-OUT = Path('/Volumes/ResearchData/Claude/varclaims/figures/colour') / S
+OUT = Path(os.environ['FIG_OUT']) if os.environ.get('FIG_OUT') else Path('/Volumes/ResearchData/Claude/varclaims/figures/colour') / S
 OUT.mkdir(parents=True, exist_ok=True)
+
+
+def PL(s):
+    """Panel letter as the target journal writes it: '(a)' when PANEL_PAREN=1 (CSBJ), else 'a'."""
+    return f'({s})' if os.environ.get('PANEL_PAREN') else s

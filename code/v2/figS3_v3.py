@@ -27,7 +27,7 @@ fig = fk.figure('double', height=135, profile=fk.target())
 gs = fig.add_gridspec(3, 2, width_ratios=[1.45, 1], height_ratios=[7.9, 4.3, 5.2])
 
 # ------------------------------------------------------------------ a  hero: the share supported rises between the claims themselves
-ax = fig.add_subplot(gs[:, 0]); fk.panel(ax, 'a', '')
+ax = fig.add_subplot(gs[:, 0]); fk.panel(ax, RL.PL('a'), '')
 S = P[P.n > 0].copy(); S['lg'] = np.log10(S.n)
 S['bin'] = pd.qcut(S.lg, 20, labels=False, duplicates='drop')
 rows = []
@@ -129,13 +129,13 @@ def strata(ax, rows, header=False):
     ax._figkit_kind = 'matrix'; ax._figkit_ramp = True
 
 
-ax = fig.add_subplot(gs[0, 1]); fk.panel(ax, 'b', '')
+ax = fig.add_subplot(gs[0, 1]); fk.panel(ax, RL.PL('b'), '')
 strata(ax, des, header=True)
 ax.text(LW + 4.4 + des[-1][3] / BMAX * BW + 0.12, 0.5 - 0.62, 'pale stub: matched null', ha='left', va='center', fontsize=fk.pt('annot'), color=GN)
 ax.set_ylim(-0.75, ax.get_ylim()[1])
-ax = fig.add_subplot(gs[1, 1]); fk.panel(ax, 'c', '')
+ax = fig.add_subplot(gs[1, 1]); fk.panel(ax, RL.PL('c'), '')
 strata(ax, pop)
-ax = fig.add_subplot(gs[2, 1]); fk.panel(ax, 'd', '')
+ax = fig.add_subplot(gs[2, 1]); fk.panel(ax, RL.PL('d'), '')
 strata(ax, era)
 ax.text(LW + 2.0, -0.5, '% with genome-wide support', ha='center', va='center', fontsize=FT, color=GN)
 ax.set_ylim(-0.95, ax.get_ylim()[1])

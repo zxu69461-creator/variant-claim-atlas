@@ -49,7 +49,7 @@ def style(ax):
 
 
 # ------------------------------------------------------------------ a  Manhattan skyline
-letter(0, 0.5, 'a')
+letter(0, 0.5, RL.PL('a'))
 ax = axes(fig, 8, 2, 171, 50)
 P = V[V.chr.notna()].copy(); P['x'], spans = fk.hero.genome(P.chr, P.bp, sex=True); P = P[P.x.notna()]
 base, hl = P[~P.hl], P[P.hl]
@@ -83,7 +83,7 @@ ax.text(0.47, 735, f'disease and trait claims on {len(V):,} variants\nin {n_pape
 ax.set_xlim(-0.045, 1.005); ax.set_ylim(-62, 820); ax.axis('off')
 
 # ------------------------------------------------------------------ b  square scatter with marginals
-letter(0, 55, 'b')
+letter(0, 55, RL.PL('b'))
 x = V[V.n_t >= 10].copy(); lx = np.log10(x.n_t); hi = (x.sup > 0.5).values
 axm = axes(fig, 11, 68, 44, 44); axt = axes(fig, 11, 58.5, 44, 8.5, sharex=axm); axr = axes(fig, 56.5, 68, 8.5, 44, sharey=axm)
 rng = np.random.default_rng(1)
@@ -107,7 +107,7 @@ axr.text(c0[-1] * 1.15, 0.975, f'{int((x.sup > 0.8).sum()):,}', fontsize=FT, col
 axt.text(2.76, axt.get_ylim()[1] * 0.95, f'{len(x):,} variants\ndashed line: matched null', fontsize=FT - 0.5, color=GD, ha='right', va='top', linespacing=1.1)
 
 # ------------------------------------------------------------------ c  six variants x trait areas x year, shared rows
-letter(70, 55, 'c')
+letter(70, 55, RL.PL('c'))
 SIX = [9939609, 738409, 7903146, 1801133, 1800795, 1800629]
 AR = [a for a in AREAS if a != 'Not mapped']; ym = {a: i for i, a in enumerate(AR[::-1])}
 X0, FW, GAP = 98, 12.2, 1.2
@@ -138,7 +138,7 @@ for k, n_ in enumerate((1, 3, 6)):
     lg.scatter([0.15], [0.62 - k * 0.2], s=4 + 7 * n_, color=GD); lg.text(0.38, 0.62 - k * 0.2, str(n_), fontsize=FT - 0.5, va='center')
 
 # ------------------------------------------------------------------ d  claims per year by area (kept)
-letter(0, 121, 'd')
+letter(0, 121, RL.PL('d'))
 ax = axes(fig, 10, 126, 66, 44)
 YA = CL.groupby(['pub_year', 'grp']).size().unstack(fill_value=0).reindex(columns=AREAS, fill_value=0).reindex(range(2000, 2026), fill_value=0)
 ax.stackplot(YA.index, *[YA[a] / 1e3 for a in AREAS], colors=[C[a] for a in AREAS], lw=0.3, edgecolor='white')
@@ -156,7 +156,7 @@ ax.set_xlim(2000, 2025); ax.set_xticks([2000, 2010, 2020]); ax.set_ylim(0, tot.m
 ax.set_ylabel('Claims per year (thousands)', fontsize=FS, labelpad=1); style(ax)
 
 # ------------------------------------------------------------------ e  FTO through time (kept)
-letter(98, 121, 'e')
+letter(98, 121, RL.PL('e'))
 FTO = CL[CL.rsid == 9939609].copy()
 merge = {'bmi': 'Body mass index', 'body mass index': 'Body mass index', 'obesity': 'Obesity', 'type 2 diabetes': 'Type 2 diabetes',
          'type 2 diabetes mellitus': 'Type 2 diabetes', 'overweight': 'Overweight', 'waist circumference': 'Waist circumference', 'metabolic syndrome': 'Metabolic syndrome'}
