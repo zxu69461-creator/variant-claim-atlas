@@ -6,7 +6,7 @@
    the PMID to Europe PMC to retrieve its title and abstract. */
 (function () {
   'use strict';
-  const APP = '1.2.1', RELEASED = '21 November 2026';
+  const APP = '1.2.2', RELEASED = '21 November 2026';
   const DV = '?v=' + APP;                                  // data version: bump when data/ changes
   const $ = (s) => document.querySelector(s);
   const out = $('#out');
@@ -476,14 +476,14 @@
       <h3>Programmatic access</h3>
       <p>The data behind the tool are static files under <code>${B}</code>, free to fetch without a key. Each JSON file holds <code>cols</code> (column names) and <code>rows</code> (one array per row).</p>
       <div class="tw"><table><thead><tr><th>File</th><th>Content</th></tr></thead><tbody>
-        <tr><td><code>data/meta.json</code></td><td>releases of the sources and counts</td></tr>
-        <tr><td><code>data/variants.json</code></td><td>one row per variant: gene, papers, reported, absent, testable, supported share, matched null, median stated n, support by sample-size class, top traits, ClinVar assertion, first genome-wide year</td></tr>
-        <tr><td><code>data/traits.json</code></td><td>one row per trait: area, counts, supported share, matched null, most-claimed variants</td></tr>
-        <tr><td><code>data/claims/NN.json</code></td><td>every claim record; <code>NN</code> = rsID number modulo 64, two digits (rs7903146 → <code>data/claims/50.json</code>)</td></tr>
-        <tr><td><code>data/lexicon.json</code></td><td>per trait: ontology identifier and the phrases abstracts used for it</td></tr>
-        <tr><td><code>data/papers.json</code></td><td>per PubMed ID: year and the variants with a claim</td></tr>
-        <tr><td><code>atlas/Data_S1_variant_trait_claim_atlas.tsv.gz</code></td><td>the full atlas (tab-separated)</td></tr>
-        <tr><td><code>atlas/Data_S3_clinvar_risk_variants.tsv</code></td><td>the ClinVar table</td></tr>
+        <tr><td><code>data/meta.json</code></td><td class="t">releases of the sources and counts</td></tr>
+        <tr><td><code>data/variants.json</code></td><td class="t">one row per variant: gene, papers, reported, absent, testable, supported share, matched null, median stated n, support by sample-size class, top traits, ClinVar assertion, first genome-wide year</td></tr>
+        <tr><td><code>data/traits.json</code></td><td class="t">one row per trait: area, counts, supported share, matched null, most-claimed variants</td></tr>
+        <tr><td><code>data/claims/NN.json</code></td><td class="t">every claim record; <code>NN</code> = rsID number modulo 64, two digits (rs7903146 → <code>data/claims/50.json</code>)</td></tr>
+        <tr><td><code>data/lexicon.json</code></td><td class="t">per trait: ontology identifier and the phrases abstracts used for it</td></tr>
+        <tr><td><code>data/papers.json</code></td><td class="t">per PubMed ID: year and the variants with a claim</td></tr>
+        <tr><td><code>atlas/Data_S1_variant_trait_claim_atlas.tsv.gz</code></td><td class="t">the full atlas (tab-separated)</td></tr>
+        <tr><td><code>atlas/Data_S3_clinvar_risk_variants.tsv</code></td><td class="t">the ClinVar table</td></tr>
       </tbody></table></div>
       <p>Ready-to-run clients reproduce the views and the verdict: <a href="examples/vca_client.py">Python</a> (standard library only) and <a href="examples/vca_client.R">R</a> (package jsonlite). For example:</p>
       <pre>python vca_client.py check rs7903146 "type 2 diabetes"
@@ -505,7 +505,7 @@ Rscript vca_client.R check rs1800795 "type 2 diabetes"</pre>
       </ul>
       <h3>Version history</h3>
       <ul>
-        <li><b>1.2.0–1.2.1</b> (21 November 2026): screening of a paper or a text; trait abbreviations and phrases in Check a claim and Batch check; claims per year on variant pages; links to dbSNP, the GWAS Catalog, ClinVar, LitVar 2.0, Ensembl, Open Targets and the ontology; this help page; Python and R clients.</li>
+        <li><b>1.2.0–1.2.2</b> (21 November 2026): screening of a paper or a text; trait abbreviations and phrases in Check a claim and Batch check; claims per year on variant pages; links to dbSNP, the GWAS Catalog, ClinVar, LitVar 2.0, Ensembl, Open Targets and the ontology; this help page; Python and R clients.</li>
         <li><b>1.1.0–1.1.1</b> (21 November 2026): Check a claim, Batch check with CSV export, ClinVar risk variants, filters and downloads.</li>
         <li><b>1.0.0–1.0.2</b> (17 November 2026): look-up of variants, genes and traits; atlas data and analysis code.</li>
       </ul>
