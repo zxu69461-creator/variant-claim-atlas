@@ -4,9 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Variant–Trait Claim Atlas</title>
-<meta name="description" content="Check any published variant–trait claim against genome-wide evidence: look up a variant, gene or trait, check a claim, screen a list of variants, browse ClinVar risk variants.">
+<meta name="description" content="Check any published variant–trait claim against genome-wide evidence: look up a variant, gene or trait, check a claim, screen a paper or a text, batch-check a list of variants, browse ClinVar risk variants.">
+<meta property="og:title" content="Variant–Trait Claim Atlas">
+<meta property="og:description" content="Published variant–trait claims, each set against genome-wide evidence in the GWAS Catalog and against frequency-matched random variants.">
+<meta property="og:url" content="https://zxu69461-creator.github.io/variant-claim-atlas/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23375b94'/%3E%3Crect x='7' y='16' width='4' height='9' fill='%23fff'/%3E%3Crect x='14' y='10' width='4' height='15' fill='%23fff'/%3E%3Crect x='21' y='6' width='4' height='19' fill='%23d9731a'/%3E%3C/svg%3E">
 <style>
-/* Layout: one reading column; a tab bar for the five views, a search card on the look-up view, one result card, a reference footer. */
+/* Layout: one reading column; a tab bar for the seven views, a search card on the look-up view, one result card, a reference footer. */
 :root{--bg:#f6f7f8;--card:#ffffff;--ink:#1b2128;--muted:#5d6874;--line:#dde1e6;--sup:#375b94;--sup-l:#e7edf7;--null:#8a8a8a;--first:#d9731a;--rest:#2f9c97;--warn:#9a3d45;--warn-l:#f6e9ea;--nt-l:#eef0f2;
   --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
 @media (prefers-color-scheme: dark){:root{--bg:#121519;--card:#1a1f25;--ink:#e5e9ee;--muted:#9aa5b1;--line:#2c333b;--sup:#8fb0e3;--sup-l:#1f2a3a;--null:#9a9a9a;--first:#f0a060;--rest:#62c7c1;--warn:#e08a92;--warn-l:#352227;--nt-l:#22272d;color-scheme:dark}}
@@ -47,6 +51,18 @@ th[data-k]{cursor:pointer} th[data-k]:hover{color:var(--ink)} td.num,th.num{text
 .tool b{color:var(--sup)}
 code{font-family:var(--mono);font-size:13px}
 footer{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.links{display:flex;gap:6px 14px;flex-wrap:wrap;font-size:13px} .links span{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap} .chips a,.chips button{font:13px var(--ui);padding:5px 10px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--sup);text-decoration:none;cursor:pointer}
+.tl{width:100%;max-width:760px;height:auto;display:block} .tl text{font:11px var(--ui);fill:var(--muted)}
+.tl .s{fill:var(--sup)} .tl .x{fill:var(--warn)} .tl .q{fill:var(--null);opacity:.55} .tl .a{fill:none;stroke:var(--muted);stroke-width:1} .tl .ax{stroke:var(--line)} .tl .gw{stroke:var(--first);stroke-width:1.5;stroke-dasharray:4 3}
+.key{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)} .key i{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px;border-radius:2px}
+.mini{display:inline-block;width:70px;height:7px;background:var(--line);border-radius:2px;vertical-align:middle;margin-right:6px;position:relative} .mini i{position:absolute;left:0;top:0;bottom:0;background:var(--sup);border-radius:2px}
+mark{background:var(--sup-l);color:var(--ink);border-bottom:2px solid var(--sup);padding:0 1px} mark.rs{background:transparent;border-bottom-color:var(--first);font-weight:600}
+.abs{font-size:14px;line-height:1.6;border-left:3px solid var(--line);padding:4px 0 4px 12px;max-width:none}
+.help h3{margin-top:6px} .help p,.help li{max-width:80ch} .help ul,.help ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.help dl{margin:0;display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:6px 14px} .help dt{font-weight:600} .help dd{margin:0}
+@media (max-width:560px){.help dl{grid-template-columns:1fr} .help dd{margin-bottom:6px}}
+pre{font-family:var(--mono);font-size:12.5px;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;margin:0}
 </style>
 </head>
 <body>
@@ -59,8 +75,10 @@ footer{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;ga
 <nav class="tabs" aria-label="Tools">
 <a href="#lookup" data-tab="lookup">Look up</a>
 <a href="#check" data-tab="check">Check a claim</a>
+<a href="#paper" data-tab="paper">Screen a paper</a>
 <a href="#batch" data-tab="batch">Batch check</a>
 <a href="#clinvar" data-tab="clinvar">ClinVar risk variants</a>
+<a href="#help" data-tab="help">Help</a>
 <a href="#about" data-tab="about">About and download</a>
 </nav>
 
@@ -74,13 +92,15 @@ footer{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;ga
 <div class="ex muted">Examples: <a href="#rs9939609">rs9939609</a> <a href="#rs1800795">rs1800795</a> <a href="#rs738409">rs738409</a> <a href="#gene=MTHFR">MTHFR</a> <a href="#trait=Type 2 diabetes mellitus">type 2 diabetes</a></div>
 </section>
 
-<main id="out" class="card"><p class="muted">Loading the atlas…</p></main>
+<main id="out" class="card" aria-live="polite"><p class="muted">Loading the atlas (about 3 MB on first visit)…</p>
+<noscript><p>This tool runs in the browser and needs JavaScript. The data files can be downloaded from the <a href="https://github.com/zxu69461-creator/variant-claim-atlas">GitHub repository</a>.</p></noscript></main>
 
 <footer>
 <p><b>How to read it.</b> A reported association is <i>supported</i> when the same variant, or a proxy in linkage disequilibrium (r² ≥ 0.8, 1000 Genomes European or East Asian), has an association at P &lt; 5 × 10⁻⁸ with the same trait or a broader or narrower ontology term, in a GWAS Catalog paper other than the claim's own. <i>Earlier</i> means that genome-wide report was published before the claim. The <i>matched null</i> is the share of frequency-matched random variants that would be supported for the same traits. A claim is <i>testable</i> when its trait has any association in the GWAS Catalog.</p>
 <p><b>Limits.</b> Claims were read from titles and abstracts by a language model and checked on a blinded sample (precision 92% for reported associations, 75% for reported absences). Support does not require the same allele or direction. Absence of genome-wide support is not evidence of no effect. Numbers here pool all papers; the estimates in the paper use held-out papers.</p>
 <p id="rel"></p>
-<p>Full atlas, ClinVar table and analysis code: <a href="https://github.com/zxu69461-creator/variant-claim-atlas">github.com/zxu69461-creator/variant-claim-atlas</a>. Archived release: <a href="https://doi.org/10.5281/zenodo.24314560">doi:10.5281/zenodo.24314560</a>. Code MIT, data CC BY 4.0.</p>
+<p>Full atlas, ClinVar table and analysis code: <a href="https://github.com/zxu69461-creator/variant-claim-atlas">github.com/zxu69461-creator/variant-claim-atlas</a>. Archived release: <a href="https://doi.org/10.5281/zenodo.24314560">doi:10.5281/zenodo.24314560</a>. Licences: code MIT, data CC BY 4.0; free for all uses, no registration.</p>
+<p id="ver"></p>
 </footer>
 </div>
 <script src="app.js"></script>

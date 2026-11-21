@@ -1,6 +1,6 @@
 {
- "title": "Variant–Trait Claim Atlas: published variant–trait claims calibrated against genome-wide evidence",
- "description": "Atlas of 212,710 variant–trait claims read from 75,578 PubMed abstracts, each set against genome-wide significant associations in the NHGRI-EBI GWAS Catalog with a frequency-matched null; ClinVar risk variants with their genome-wide comparison; static lookup page; analysis code and dated analysis plan.",
+ "title": "Variant–Trait Claim Atlas: a web tool checking published variant–trait claims against genome-wide evidence",
+ "description": "Web tool and atlas of 201,720 disease or trait claims read from 71,577 PubMed abstracts, each set against genome-wide significant associations in the NHGRI-EBI GWAS Catalog with a frequency-matched null. The tool looks up variants, genes and traits, checks single claims, screens papers or texts, batch-checks lists and lists the ClinVar risk variants with their genome-wide support. Includes the atlas data, Python and R clients, and the analysis code with the dated analysis plan.",
  "creators": [
   {
    "name": "Hu, Yuanchun",
@@ -35,7 +35,7 @@
    "affiliation": "Hubei Key Laboratory of Embryonic Stem Cell Research, Taihe Hospital, Hubei University of Medicine"
   }
  ],
- "upload_type": "dataset",
+ "upload_type": "software",
  "license": "cc-by-4.0",
  "keywords": [
   "genetic association",
@@ -44,6 +44,8 @@
   "ClinVar",
   "replication",
   "literature mining",
-  "variant curation"
- ]
+  "variant curation",
+  "web tool"
+ ],
+ "version": "1.2.0"
 }
