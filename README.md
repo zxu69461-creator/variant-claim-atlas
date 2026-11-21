@@ -6,8 +6,17 @@ Published claims that a named genetic variant is associated with a disease or tr
 against genome-wide significant associations in the NHGRI-EBI GWAS Catalog, with frequency-matched random variants as the chance
 expectation.
 
-**Online lookup:** https://zxu69461-creator.github.io/variant-claim-atlas/ — search an rsID (rs1800795), a gene symbol (MTHFR) or a disease
-or trait (asthma) to see how often its published claims have genome-wide support, by study size, with every claim linked to PubMed.
+**Online tool:** https://zxu69461-creator.github.io/variant-claim-atlas/ (runs in the browser; no installation or registration)
+
+- **Look up** a variant (rs1800795), a gene (MTHFR) or a disease or trait (asthma): support of its published claims against the matched
+  null, by stated sample size, with every claim linked to PubMed and downloadable as CSV.
+- **Check a claim**: one variant and one trait (rs1800795 and type 2 diabetes) give a verdict (supported, partly supported, not supported
+  or not testable), the year of the first genome-wide report and the matching claims.
+- **Batch check**: paste or upload a list of rsIDs or variant–trait pairs (up to 10,000 lines) and download the results as CSV.
+- **ClinVar risk variants**: the 239 variants that ClinVar lists as risk factors, associations or protective variants, with their
+  genome-wide support and whether genome-wide evidence supports the listed condition.
+- **Programmatic access**: the tool reads static JSON files (`data/variants.json`, `data/traits.json`, `data/claims/NN.json`) that can be
+  fetched directly.
 
 ## Contents
 

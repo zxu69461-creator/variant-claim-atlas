@@ -4,22 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Variant–Trait Claim Atlas</title>
-<meta name="description" content="Look up any published variant–trait claim and see how often genome-wide evidence supports it.">
+<meta name="description" content="Check any published variant–trait claim against genome-wide evidence: look up a variant, gene or trait, check a claim, screen a list of variants, browse ClinVar risk variants.">
 <style>
-/* Layout: one reading column; a search bar, then one result card (variant or trait) with key numbers, size classes and tables. */
-:root{--bg:#f6f7f8;--card:#ffffff;--ink:#1b2128;--muted:#5d6874;--line:#dde1e6;--sup:#375b94;--sup-l:#c9d5ea;--null:#8a8a8a;--first:#d9731a;--rest:#2f9c97;--warn:#9a3d45;
+/* Layout: one reading column; a tab bar for the five views, a search card on the look-up view, one result card, a reference footer. */
+:root{--bg:#f6f7f8;--card:#ffffff;--ink:#1b2128;--muted:#5d6874;--line:#dde1e6;--sup:#375b94;--sup-l:#e7edf7;--null:#8a8a8a;--first:#d9731a;--rest:#2f9c97;--warn:#9a3d45;--warn-l:#f6e9ea;--nt-l:#eef0f2;
   --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace}
-@media (prefers-color-scheme: dark){:root{--bg:#121519;--card:#1a1f25;--ink:#e5e9ee;--muted:#9aa5b1;--line:#2c333b;--sup:#8fb0e3;--sup-l:#2c3d5a;--null:#9a9a9a;--first:#f0a060;--rest:#62c7c1;--warn:#e08a92;color-scheme:dark}}
+@media (prefers-color-scheme: dark){:root{--bg:#121519;--card:#1a1f25;--ink:#e5e9ee;--muted:#9aa5b1;--line:#2c333b;--sup:#8fb0e3;--sup-l:#1f2a3a;--null:#9a9a9a;--first:#f0a060;--rest:#62c7c1;--warn:#e08a92;--warn-l:#352227;--nt-l:#22272d;color-scheme:dark}}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--ui);padding:0 max(16px,env(safe-area-inset-left)) 40px max(16px,env(safe-area-inset-right))}
-.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:16px;padding-top:22px}
-h1{font-size:22px;margin:0} h2{font-size:18px;margin:0} h3{font-size:14px;margin:0;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
-p{margin:0;max-width:75ch} .muted{color:var(--muted)} a{color:var(--sup)}
+.wrap{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:16px;padding-top:22px}
+h1{font-size:22px;margin:0} h2{font-size:18px;margin:0} h3{font-size:13.5px;margin:0;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+p{margin:0;max-width:78ch} .muted{color:var(--muted)} a{color:var(--sup)}
 .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
-form{display:flex;gap:8px;flex-wrap:wrap} input{flex:1 1 280px;min-width:0;font:16px var(--ui);padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink)}
-button{font:15px var(--ui);padding:10px 16px;border-radius:8px;border:1px solid var(--sup);background:var(--sup);color:#fff;cursor:pointer}
-button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(--first);outline-offset:2px}
-.ex{display:flex;gap:6px;flex-wrap:wrap;font-size:13px} .ex a{font-family:var(--mono)}
+nav.tabs{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+nav.tabs a{padding:8px 13px;text-decoration:none;color:var(--muted);border-bottom:2px solid transparent;font-weight:600;font-size:14px}
+nav.tabs a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--sup)}
+form{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end} label{font-size:13px;color:var(--muted)}
+.fld{display:flex;flex-direction:column;gap:4px;flex:1 1 240px;min-width:0}
+input,textarea,select{font:15px var(--ui);padding:9px 11px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);min-width:0;width:100%}
+textarea{font-family:var(--mono);font-size:13px;min-height:150px;resize:vertical}
+button{font:15px var(--ui);padding:9px 16px;border-radius:8px;border:1px solid var(--sup);background:var(--sup);color:#fff;cursor:pointer;white-space:nowrap}
+button.sec{background:transparent;color:var(--sup)}
+button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--first);outline-offset:2px}
+.ex{display:flex;gap:8px;flex-wrap:wrap;font-size:13px} .ex a{font-family:var(--mono)}
 .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
 .kpi{border-left:3px solid var(--line);padding:2px 10px} .kpi b{display:block;font-size:22px;font-variant-numeric:tabular-nums} .kpi span{font-size:12.5px;color:var(--muted)}
 .kpi.s{border-color:var(--sup)} .kpi.n{border-color:var(--null)}
@@ -29,10 +36,16 @@ button:focus-visible,input:focus-visible,a:focus-visible{outline:2px solid var(-
 .sz{display:flex;flex-direction:column;gap:3px;font-size:13px}
 .tw{overflow-x:auto} table{border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;width:100%}
 th,td{border-bottom:1px solid var(--line);padding:5px 8px;text-align:left;white-space:nowrap} th{font-weight:600;color:var(--muted);font-size:12.5px}
-td.num,th.num{text-align:right} td.t{white-space:normal;min-width:180px}
+th[data-k]{cursor:pointer} th[data-k]:hover{color:var(--ink)} td.num,th.num{text-align:right} td.t{white-space:normal;min-width:180px}
 .yes{color:var(--sup);font-weight:600} .no{color:var(--warn)} .nt{color:var(--muted)}
-.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:4px;vertical-align:0}
+.verdict{border-left:4px solid var(--sup);background:var(--sup-l);padding:10px 14px;border-radius:4px;display:flex;flex-direction:column;gap:4px}
+.verdict.no{border-color:var(--warn);background:var(--warn-l)} .verdict.nt{border-color:var(--null);background:var(--nt-l)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between}
 .list a{display:block;padding:4px 0}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tool{border:1px solid var(--line);border-radius:8px;padding:12px 14px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--ink)}
+.tool b{color:var(--sup)}
+code{font-family:var(--mono);font-size:13px}
 footer{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
 </style>
 </head>
@@ -43,12 +56,21 @@ footer{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;ga
 <p class="muted" id="intro">Published claims that a named genetic variant is associated with a disease or trait, each set against genome-wide significant associations in the GWAS Catalog.</p>
 </header>
 
-<section class="card">
+<nav class="tabs" aria-label="Tools">
+<a href="#lookup" data-tab="lookup">Look up</a>
+<a href="#check" data-tab="check">Check a claim</a>
+<a href="#batch" data-tab="batch">Batch check</a>
+<a href="#clinvar" data-tab="clinvar">ClinVar risk variants</a>
+<a href="#about" data-tab="about">About and download</a>
+</nav>
+
+<section class="card" id="searchcard">
 <form id="f" role="search">
-<label for="q" class="muted" style="flex-basis:100%;font-size:13px">Search an rsID, a gene symbol or a disease or trait</label>
-<input id="q" name="q" autocomplete="off" placeholder="rs1800795, PNPLA3, type 2 diabetes">
+<div class="fld"><label for="q">rsID, gene symbol, or disease or trait</label>
+<input id="q" name="q" autocomplete="off" list="traitlist" placeholder="rs1800795, PNPLA3, type 2 diabetes"></div>
 <button type="submit">Look up</button>
 </form>
+<datalist id="traitlist"></datalist>
 <div class="ex muted">Examples: <a href="#rs9939609">rs9939609</a> <a href="#rs1800795">rs1800795</a> <a href="#rs738409">rs738409</a> <a href="#gene=MTHFR">MTHFR</a> <a href="#trait=Type 2 diabetes mellitus">type 2 diabetes</a></div>
 </section>
 
