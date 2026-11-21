@@ -33,7 +33,7 @@ with zipfile.ZipFile(OLD / 'Data_S2_analysis_code.zip') as z:
     plan = z.read('code/ANALYSIS_PLAN.md').decode()
 SKIP = {'00_template.py', '21_fig1_overview.py', '22_fig2_support.py', '23_fig3_size.py', '24_fig4_time.py', '25_figS1_sensitivity.py',
         '31_build_docx.py', 'ajhg_genes.py', 'pilot_f1.py', 'fig1_v2.py', 'fig2_v2.py', 'fig3_v2.py', 'fig4_v2.py', 'lay_colour.py', 'colour_page.json'}
-README = """Analysis code for "Calibrating 212,710 published variant-trait claims against genome-wide evidence"
+README = """Analysis code for "Variant-Trait Claim Atlas: checking 201,720 published variant-trait claims against genome-wide evidence and ClinVar"
 
 ANALYSIS_PLAN.md   the analysis plan with its dated amendments; amendment 4 (8 November 2026) is the confirmatory plan
 m5/                candidate abstracts from the PubMed baseline (01, 02, pmparse), linkage-disequilibrium proxies and the matched-null
@@ -47,8 +47,9 @@ m5/                candidate abstracts from the PubMed baseline (01, 02, pmparse
 14_clinvar         additional analysis: ClinVar risk-factor, association and protective variants (Data S3)
 16_robustness      additional analyses: narrower trait matching; ClinVar conditions
 30, 15, 32, 33     numbers quoted in the text; supplemental tables and Data S1-S3
-34_lookup_data     data files of the online lookup page
-40, figdata, v2/   variant positions and the figures (v2/fig1-4_v3, v2/figS1-S3_v3; colour roles in v2/roles.py and palettes.json)
+34_lookup_data     data files of the web tool (variants, traits, claims)
+35_lookup_extras   data files of the web tool for screening papers and texts (trait phrases, papers)
+40, figdata, v2/   variant positions and the figures (v2/fig1-4_v3, v2/fig5_tool, v2/figS0_design, v2/figS1-S3_v3; colour roles in v2/roles.py and palettes.json)
 run_chain.sh       the order in which the confirmatory steps were run
 
 The scripts read a local project database built by steps 03-08 from the public inputs listed in the article; paths at the top of
