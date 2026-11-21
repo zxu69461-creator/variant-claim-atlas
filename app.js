@@ -6,7 +6,7 @@
    the PMID to Europe PMC to retrieve its title and abstract. */
 (function () {
   'use strict';
-  const APP = '1.2.0', RELEASED = '21 November 2026';
+  const APP = '1.2.1', RELEASED = '21 November 2026';
   const DV = '?v=' + APP;                                  // data version: bump when data/ changes
   const $ = (s) => document.querySelector(s);
   const out = $('#out');
@@ -121,7 +121,7 @@
     const step = n > 30 ? 10 : n > 12 ? 5 : n > 6 ? 2 : 1; let ax = '';
     for (let y = Math.ceil(y0 / step) * step; y <= y1; y += step) ax += `<text x="${(L + (y - y0 + 0.5) * bw).toFixed(1)}" y="${H - 8}" text-anchor="middle">${y}</text>`;
     const yt = [0, Math.round(mx / 2), mx].filter((v, i, a) => a.indexOf(v) === i).map((v) => `<text x="${L - 6}" y="${(H - B - sy(v) + 4).toFixed(1)}" text-anchor="end">${v}</text>`).join('');
-    const gl = gw ? `<line class="gw" x1="${(L + (gw - y0) * bw).toFixed(1)}" x2="${(L + (gw - y0) * bw).toFixed(1)}" y1="${Tp}" y2="${H - B}"/><text x="${(L + (gw - y0) * bw + 4).toFixed(1)}" y="${Tp + 9}" style="fill:var(--first)">first genome-wide report, ${gw}</text>` : '';
+    const gl = gw ? `<line class="gw" x1="${(L + (gw - y0) * bw).toFixed(1)}" x2="${(L + (gw - y0) * bw).toFixed(1)}" y1="${Tp}" y2="${H - B}"/><text x="${(L + (gw - y0) * bw + ((gw - y0) / n > 0.6 ? -4 : 4)).toFixed(1)}" y="${Tp + 9}" text-anchor="${(gw - y0) / n > 0.6 ? 'end' : 'start'}" style="fill:var(--first)">first genome-wide report, ${gw}</text>` : '';
     return `<svg class="tl" viewBox="0 0 ${W} ${H}" role="img" aria-label="Claims per year from ${y0} to ${y1}"><line class="ax" x1="${L}" x2="${W - R}" y1="${H - B}" y2="${H - B}"/>${g}${gl}${ax}${yt}</svg>
       <div class="key"><span><i style="background:var(--sup)"></i>supported</span><span><i style="background:var(--warn)"></i>not supported</span><span><i style="background:var(--null);opacity:.55"></i>not testable</span><span><i style="border:1px solid var(--muted)"></i>no association reported</span>${gw ? '<span><i style="background:var(--first);height:2px;vertical-align:3px"></i>first genome-wide report for a claimed trait</span>' : ''}</div>`;
   }
@@ -330,8 +330,9 @@
       <p class="muted">Enter a PubMed ID to screen its title and abstract, or paste any text (an abstract, a manuscript, a report). Every rsID in it is found, the diseases and traits it names are matched to the published claims about that variant, and each variant–trait pair receives the verdict of <a href="#check">Check a claim</a>.</p>
       <form id="pf"><div class="fld" style="flex:0 1 220px"><label for="pmid">PubMed ID</label><input id="pmid" inputmode="numeric" placeholder="20967696" value="${esc(pm)}"></div><button type="submit">Screen paper</button></form>
       <div class="chips"><span class="muted" style="font-size:13px;align-self:center">Examples:</span><a href="#paper=42749416">PMID 42749416 (2026, not in the atlas)</a><a href="#paper=20967696">PMID 20967696 (2010)</a><a href="#paper=32685554">PMID 32685554 (2020)</a></div>
-      <div class="fld" style="flex:1 1 auto"><label for="ptx">Or paste text</label><textarea id="ptx" placeholder="Paste an abstract or a manuscript. Text is screened in your browser and not sent anywhere."></textarea></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><button id="prun" type="button">Screen text</button><button class="sec" id="pex" type="button">Load example text</button></div>
+      <details id="pdt"><summary style="cursor:pointer;color:var(--sup);font-size:14px">Or paste text (an abstract or a manuscript)</summary>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px"><textarea id="ptx" aria-label="Text to screen" placeholder="Paste an abstract or a manuscript. Text is screened in your browser and not sent anywhere."></textarea>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button id="prun" type="button">Screen text</button><button class="sec" id="pex" type="button">Load example text</button></div></div></details>
       <div id="pres" style="display:flex;flex-direction:column;gap:12px"></div>`;
     $('#pf').addEventListener('submit', (e) => { e.preventDefault(); const v = $('#pmid').value.replace(/\D/g, ''); if (v) location.hash = 'paper=' + v; });
     $('#pex').addEventListener('click', () => { $('#ptx').value = 'We genotyped TCF7L2 rs7903146 and IL6 rs1800795 in 812 patients with type 2 diabetes (T2D) and 790 controls. The T allele of rs7903146 was associated with T2D (OR 1.41). The rs1800795 C allele was associated with higher T2D risk and with obesity. MTHFR rs1801133 was not associated with coronary artery disease.'; });
@@ -504,7 +505,7 @@ Rscript vca_client.R check rs1800795 "type 2 diabetes"</pre>
       </ul>
       <h3>Version history</h3>
       <ul>
-        <li><b>1.2.0</b> (21 November 2026): screening of a paper or a text; trait abbreviations and phrases in Check a claim and Batch check; claims per year on variant pages; links to dbSNP, the GWAS Catalog, ClinVar, LitVar 2.0, Ensembl, Open Targets and the ontology; this help page; Python and R clients.</li>
+        <li><b>1.2.0–1.2.1</b> (21 November 2026): screening of a paper or a text; trait abbreviations and phrases in Check a claim and Batch check; claims per year on variant pages; links to dbSNP, the GWAS Catalog, ClinVar, LitVar 2.0, Ensembl, Open Targets and the ontology; this help page; Python and R clients.</li>
         <li><b>1.1.0–1.1.1</b> (21 November 2026): Check a claim, Batch check with CSV export, ClinVar risk variants, filters and downloads.</li>
         <li><b>1.0.0–1.0.2</b> (17 November 2026): look-up of variants, genes and traits; atlas data and analysis code.</li>
       </ul>
