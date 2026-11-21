@@ -10,10 +10,15 @@ Reads the static data files of the web tool and reproduces its views and its ver
 
 Use --base to read a local copy of the repository instead of the web site (python vca_client.py --base ./variant-claim-atlas ...).
 As a module: c = Atlas(); c.check(7903146, "T2D")."""
-import argparse, csv, json, re, sys, urllib.request
+import argparse, csv, json, re, ssl, sys, urllib.error, urllib.request
 from pathlib import Path
 
 BASE = 'https://zxu69461-creator.github.io/variant-claim-atlas/'
+try:                                    # python.org builds on macOS may lack system certificates; certifi supplies them when installed
+    import certifi
+    _CTX = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    _CTX = ssl.create_default_context()
 
 
 class Atlas:
@@ -26,8 +31,14 @@ class Atlas:
     def _get(self, path):
         if path not in self._cache:
             if self.base.startswith('http'):
-                with urllib.request.urlopen(self.base + path, timeout=120) as r:
-                    self._cache[path] = json.load(r)
+                try:
+                    with urllib.request.urlopen(self.base + path, timeout=120, context=_CTX) as r:
+                        self._cache[path] = json.load(r)
+                except urllib.error.URLError as e:
+                    if 'CERTIFICATE_VERIFY_FAILED' in str(e):
+                        sys.exit('Certificate check failed. Install certificates (pip install certifi, or run "Install Certificates.command" '
+                                 'of the python.org installer on macOS), or pass --base with a local copy of the repository.')
+                    raise
             else:
                 self._cache[path] = json.loads((Path(self.base) / path).read_text())
         return self._cache[path]
