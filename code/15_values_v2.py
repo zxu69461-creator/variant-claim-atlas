@@ -105,6 +105,16 @@ _p = F.claims('heldout'); _p = _p[(_p.status == 'positive') & (_p.n > 0)]
 from importlib.metadata import version as _ver
 V.update(f2_median=f'{int(_p.n.median()):,}', ver_pycirclize=_ver('pycirclize'))
 
+# ---- the web tool's claim checks shown in Figure 5 (lookup_site/data/claims, both splits)
+def _chk(rs, t):
+    sh = json.loads((F.ROOT / 'lookup_site' / 'data' / 'claims' / f'{rs % 64:02d}.json').read_text())
+    C = [dict(zip(sh['cols'], r)) for r in sh['rows'] if r[1] == rs and t in r[2].lower()]
+    R = [c for c in C if c['status'] == 'reported']; Tt = [c for c in R if c['testable']]; S = [c for c in Tt if c['supported']]
+    return len(R), len(Tt), len(S), len(C) - len(R), min([c['first_gw_year'] for c in S if c['first_gw_year']] or [0])
+r_ = _chk(1800795, 'type 2 diabetes'); t_ = _chk(7903146, 'type 2 diabetes')
+V.update(chk_il6_rep=str(r_[0]), chk_il6_test=str(r_[1]), chk_il6_sup=str(r_[2]), chk_il6_abs=str(r_[3]),
+         chk_tcf_rep=str(t_[0]), chk_tcf_test=str(t_[1]), chk_tcf_sup=str(t_[2]), chk_tcf_first=str(t_[4]))
+
 V['rc_pos_short'] = V['rc_pos'].split(' ')[0]                     # reading-check precision alone, for the abstract
 
 # ---- language-model outputs that reached the token limit or could not be parsed (work/reader/reader_all_v2.jsonl)
@@ -117,6 +127,12 @@ for _l in open(F.ROOT / 'work' / 'reader' / 'reader_all_v2.jsonl'):
     if _r.get('truncated'):
         _t += 1; _ct += len(_r['claims'])
 V.update(trunc_n=num(_t), trunc_pct=pct(_t / _n, 1), trunc_entries_pct=pct(_ct / _ca, 1), parse_fail=num(_pf), parse_fail_pct=pct(_pf / _n, 2))
+
+# ---- the lookup page's record for rs1800795 (lookup_site/data/variants.json, both splits)
+_lv = json.loads((F.ROOT / 'lookup_site' / 'data' / 'variants.json').read_text())
+_row = dict(zip(_lv['cols'], next(r for r in _lv['rows'] if r[0] == 1800795)))
+V.update(lk_il6_papers=num(_row['papers']), lk_il6_reported=num(_row['reported']), lk_il6_testable=num(_row['testable']),
+         lk_il6_sup=pct(_row['supported'], 1), lk_il6_null=pct(_row['null'], 1))
 
 V['TABLE2'] = V['TABLE2'].replace('support and matched null as in Figure 2', 'support and matched null as in Figure 1')
 VJ.write_text(json.dumps(V, ensure_ascii=False, indent=1))
